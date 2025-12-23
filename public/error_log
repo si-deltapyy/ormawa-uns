@@ -1,0 +1,131 @@
+[18-Jan-2024 06:53:00 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.1.0". You are running 7.4.33. in /home/ormx3525/public_html/vendor/composer/platform_check.php on line 24
+[18-Jan-2024 13:53:48 Asia/Jakarta] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.1.0". You are running 8.0.30. in /home/ormx3525/public_html/vendor/composer/platform_check.php on line 24
+[25-Jan-2024 14:23:01 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:01 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:01 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ormx3525/public_html/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/ormx3525/public_html/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:05 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:05 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:05 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ormx3525/public_html/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/ormx3525/public_html/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:08 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:08 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:08 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ormx3525/public_html/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/ormx3525/public_html/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:08 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:08 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:08 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ormx3525/public_html/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/ormx3525/public_html/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:11 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:11 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:11 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ormx3525/public_html/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/ormx3525/public_html/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:14 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:14 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:14 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ormx3525/public_html/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/ormx3525/public_html/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:15 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:15 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:15 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ormx3525/public_html/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/ormx3525/public_html/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:28 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:28 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:28 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ormx3525/public_html/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/ormx3525/public_html/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:32 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:32 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:32 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ormx3525/public_html/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/ormx3525/public_html/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:53 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:53 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:53 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ormx3525/public_html/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/ormx3525/public_html/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:57 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:57 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:23:57 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ormx3525/public_html/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/ormx3525/public_html/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:27:25 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:27:25 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:27:25 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ormx3525/public_html/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/ormx3525/public_html/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:27:28 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:27:28 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:27:28 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ormx3525/public_html/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/ormx3525/public_html/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:29:22 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../ormawauns/vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:29:22 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../ormawauns/vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:29:22 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ormx3525/public_html/../ormawauns/vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/ormx3525/public_html/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:29:24 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../ormawauns/vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:29:24 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../ormawauns/vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:29:24 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ormx3525/public_html/../ormawauns/vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/ormx3525/public_html/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:29:25 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../ormawauns/vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:29:25 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../ormawauns/vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:29:25 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ormx3525/public_html/../ormawauns/vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/ormx3525/public_html/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:29:25 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../ormawauns/vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:29:25 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../ormawauns/vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:29:25 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ormx3525/public_html/../ormawauns/vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/ormx3525/public_html/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:29:25 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../ormawauns/vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:29:25 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../ormawauns/vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:29:25 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ormx3525/public_html/../ormawauns/vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/ormx3525/public_html/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:29:26 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../ormawauns/vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:29:26 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../ormawauns/vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:29:26 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ormx3525/public_html/../ormawauns/vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/ormx3525/public_html/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:29:27 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../ormawauns/vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:29:27 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../ormawauns/vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:29:27 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ormx3525/public_html/../ormawauns/vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/ormx3525/public_html/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:29:28 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../ormawauns/vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:29:28 Asia/Jakarta] PHP Warning:  require(/home/ormx3525/public_html/../ormawauns/vendor/autoload.php): Failed to open stream: No such file or directory in /home/ormx3525/public_html/index.php on line 34
+[25-Jan-2024 14:29:28 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ormx3525/public_html/../ormawauns/vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/ormx3525/public_html/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/ormx3525/public_html/index.php on line 34
+[26-Jan-2024 15:20:01 Asia/Jakarta] PHP Warning:  symlink(): No such file or directory in /home/ormx3525/public_html/symlink.php on line 4
+[26-Jan-2024 15:21:30 Asia/Jakarta] PHP Warning:  symlink(): No such file or directory in /home/ormx3525/public_html/symlink.php on line 4
+[26-Jan-2024 15:24:33 Asia/Jakarta] PHP Warning:  symlink(): No such file or directory in /home/ormx3525/public_html/symlink.php on line 4
