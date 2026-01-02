@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Spatie\Permission\Traits\HasRoles;
 
 class LoginController extends Controller
 {
@@ -27,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    // protected $redirectTo = '/dashboard';
 
     /**
      * Create a new controller instance.
@@ -48,15 +49,24 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
-            if (auth()->user()->admin == 1) {
-                return redirect()->route('index');
-            } else if(auth()->user()->admin == 0) {
-                return redirect()->route('index');
-            }
+        if (auth()->attempt(['email' => $request->email, 'password' => $request->password])) {
+        
+        $user = auth()->user();
+
+        // PERBAIKAN DISINI: Pastikan ada string nama role di dalam kurung
+        if ($user->hasRole('super-admin') || $user->hasRole('admin')) {
+            return redirect()->route('admin.index');
+        } 
+        
+        else if ($user->hasRole('user')) {
+            return redirect()->route('user.index');
+        }
+        
+        // Jika tidak punya role
+        return redirect()->route('user.index');
         } else {
             return redirect()->route('login')
-                ->with('error', 'Email-Address And Password Are Wrong.');
+                ->with('error', 'Email dan Password salah');
         }
     }
 }

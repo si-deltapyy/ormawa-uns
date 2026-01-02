@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 
@@ -16,6 +17,11 @@ class RoleSeeder extends Seeder
     public function run()
     {
         Role::create([
+            'name' => 'super-admin',
+            'guard_name' => 'web'
+        ]);
+        
+        Role::create([
             'name' => 'admin',
             'guard_name' => 'web'
         ]);
@@ -24,6 +30,33 @@ class RoleSeeder extends Seeder
             'name' => 'user',
             'guard_name' => 'web'
         ]);
+
+        Role::create([
+            'name' => 'stakeholder',
+            'guard_name' => 'web'
+        ]);
+
+        Role::create([
+            'name' => 'ormawa',
+            'guard_name' => 'web'
+        ]);
+
+        Role::create([
+            'name' => 'pembina',
+            'guard_name' => 'web'
+        ]);
+
+        Permission::create([
+            'name' => 'ketua-ormawa',
+            'guard_name' => 'web'
+        ]);
+
+        Permission::create([
+            'name' => 'anggota-ormawa',
+            'guard_name' => 'web'
+        ]);
+
+
 
     }
 }

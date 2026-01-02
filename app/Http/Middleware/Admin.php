@@ -15,10 +15,16 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->admin == 1) {
+        if (auth()->user()->hasRole('admin')) {
             return $next($request);
         }
 
-        return redirect('home')->with('error', "You don't have admin access.");
+        // PERBAIKAN: Pisahkan Toast dan Return Back
+        
+        // 1. Set notifikasi Toast
+        toast()->error('Access Denied', 'Akses terbatas hanya untuk admin');
+        
+        // 2. Lakukan Redirect kembali
+        return back(); 
     }
 }

@@ -19,13 +19,18 @@ use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 
 class UserController extends Controller
 {
+    // public function index()
+    // {
+    //     $account = (Auth::user()->ormawa);
+    //     $name = User::join('ormawa', 'ormawa.id', '=', 'users.ormawa')
+    //         ->where('users.ormawa', '=', $account)
+    //         ->get(['users.*', 'ormawa.nama_ormawa']);
+    //     return view('user.index', compact('name'));
+    // }
+
     public function index()
     {
-        $account = (Auth::user()->ormawa);
-        $name = User::join('ormawa', 'ormawa.id', '=', 'users.ormawa')
-            ->where('users.ormawa', '=', $account)
-            ->get(['users.*', 'ormawa.nama_ormawa']);
-        return view('user.index', compact('name'));
+        return view('pages.dashboard.index');
     }
 
     public function profile()

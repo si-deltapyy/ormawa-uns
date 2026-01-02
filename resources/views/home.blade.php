@@ -1,23 +1,9 @@
-@extends('layouts.app')
+@role('admin')
+You dont have access to this Admin page.
+<a href="{{ route('admin.index') }}" class="btn btn-primary">Kembali ke Dashboard Admin</a>
+@endrole
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                    {{ __('You are normal user') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
+@role('user')
+You dont have access to this User page.
+<a href="{{ route('user.index') }}" class="btn btn-primary">Kembali ke Dashboard User</a>
+@endrole

@@ -11,8 +11,8 @@ class RoleController extends Controller
 {
     public function index()
     {
-        $user = User::all();
-        return view('role.index', ['user' => $user]);
+        $users = User::with('roles')->get();
+        return view('pages.role.index', ['users' => $users]);
     }
 
     public function insert()

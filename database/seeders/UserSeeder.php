@@ -16,16 +16,16 @@ class UserSeeder extends Seeder
     {
         $admin = User::create([
             'name' => 'Superadmin',
-            'email' => 'admin@role.test',
-            'password' => bcrypt('12345678')
+            'email' => 'admin@role',
+            'password' => bcrypt('123')
         ]);
 
         $admin->assignRole('admin');
 
         $user = User::create([
             'name' => 'User',
-            'email' => 'user@role.test',
-            'password' => bcrypt('12345678')
+            'email' => 'user@role',
+            'password' => bcrypt('123')
         ]);
 
         $user->assignRole('user');
