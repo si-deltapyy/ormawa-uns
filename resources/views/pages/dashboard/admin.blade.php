@@ -1,12 +1,11 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Organisasi Mahasiswa Universitas Sebelas Maret
+    Admin Page - Organisasi Mahasiswa Universitas Sebelas Maret
 @endsection
 
 @section('content')
 
-@role('admin')
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-flex align-items-center justify-content-between">
@@ -282,7 +281,6 @@ Organisasi Mahasiswa Universitas Sebelas Maret
         </div> <!-- end card-->
     </div> <!-- end col -->
 </div>
-@endrole
 
 @endsection
 

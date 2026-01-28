@@ -27,18 +27,90 @@
 
         {{-- Role User --}}
         @role('user')
+        <li class="menu-title">Menu</li>
         <li>
-            <a href="index.html" class="waves-effect" style="color: #000 !important;"><i class="feather-airplay"></i><span
+            <a href="{{ route('user.index') }}" class="waves-effect" ><i class="feather-airplay"></i><span
                     class="badge badge-pill badge-primary float-right">7</span><span>Dashboard</span></a>
         </li>
+        @can('ketua-ormawa')
         <li>
             <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="mdi mdi-file-document-box-plus-outline"></i>
                 <span>Pengajuan</span></a>
             <ul class="sub-menu" aria-expanded="false">
-                <li><a href="{{ route('role.index') }}">Ajuan Proker</a></li>
-                <li><a href="pages-starter.html">Edit User</a></li>
+                <li><a href="{{ route('user.ajuan.proker') }}">Ajuan Proker</a></li>
+                <li><a href="#" class="sidebar-link disabled"><del>Ajuan SPJ / LPJ</del></a></li>
+                <li><a href="#" class="sidebar-link disabled"><del>Ajuan SK</del></a></li>
             </ul>
         </li>
+        <li>
+            <a href="#" class="waves-effect sidebar-link disabled"><i class="feather-users"></i>
+                <span><del>Kegiatan Ormawa</del></span></a>
+        </li>
+        <li>
+            <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="feather-file-text"></i>
+                <span>Laporan Kegiatan</span></a>
+            <ul class="sub-menu" aria-expanded="false">
+                <li><a href="#">Laporan Proker</a></li>
+                <li><a href="#" class="sidebar-link disabled"><del>SPJ / LPJ</del></a></li>
+            </ul>
+        </li>
+        @endcan
+        @can('pembina-ormawa')
+            <li>
+                <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="mdi mdi-file-document-box-plus-outline"></i>
+                    <span>Pengajuan</span></a>
+                <ul class="sub-menu" aria-expanded="false">
+                    <li><a href="{{ route('user.ajuan.proker') }}">Pratinjau Proker</a></li>
+                </ul>
+            </li>
+        @endcan
+        <li>
+            <a href="#" class="waves-effect sidebar-link disabled"><i class="feather-bell"></i><span
+                    class="badge badge-pill badge-danger float-right">6</span><span><del>Notifikasi</del></span></a>
+        </li>
+
+        
+        <li class="menu-title">Data</li>
+        @can('ketua-ormawa')
+        <li>
+            <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="mdi mdi-file-document-box-plus-outline"></i>
+                <span>Data Ormawa</span></a>
+            <ul class="sub-menu" aria-expanded="false">
+                {{-- <li><a href="#">Informasi</a></li>
+                <li><a href="#">Dokumen</a></li> --}}
+                <li><a href="#">Anggota</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" class="waves-effect sidebar-link disabled"><i class="feather-calendar"></i><span
+                    class="badge badge-pill badge-primary float-right"></span><span><del>Jadwal Ormawa</del></span></a>
+        </li>
+        @endcan
+        @can('pembina-ormawa')
+        <li>
+            <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="mdi mdi-file-document-box-plus-outline"></i>
+                <span>Data Ormawa</span></a>
+            <ul class="sub-menu" aria-expanded="false">
+                <li><a href="{{ route('pembina.verify.anggota') }}">Verifikasi Anggota</a></li>
+            </ul>
+        </li>
+        @endcan
+        @endrole
+
+        @role('ormawa')
+            <li class="menu-title">Data Ormawa</li>
+            <li>
+                <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="mdi mdi-file-document-box-plus-outline"></i>
+                    <span>Data Ormawa</span></a>
+                <ul class="sub-menu" aria-expanded="false">
+                    <li><a href="#">Informasi</a></li>
+                    <li><a href="#">Kelola Anggota</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="waves-effect"><i class="feather-calendar"></i><span
+                        class="badge badge-pill badge-primary float-right"></span><span><del>Jadwal Ormawa</del></span></a>
+            </li>
         @endrole
     </ul>
 </div> 

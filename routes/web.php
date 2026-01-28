@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Models\User;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use Spatie\Permission\Models\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,4 +36,8 @@ Route::prefix('dashboard')
 Route::prefix('dashboard')
     ->middleware(['auth', 'user']) 
     ->group(base_path('routes/userRoutes.php'));
+
+Route::prefix('dashboard')
+    ->middleware(['auth'])
+    ->group(base_path('routes/pembinaRoutes.php'));
 

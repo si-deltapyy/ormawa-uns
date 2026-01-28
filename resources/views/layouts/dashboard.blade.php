@@ -8,11 +8,13 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Organisasi Mahasiswa Universitas Sebelas Maret</title>
+    <title>@yield('title')</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
+    <link rel="shortcut icon" href="{{asset('img/logo-uns.png')}}" />
 
     <!-- Scripts -->
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
@@ -21,13 +23,23 @@
     <link href={{ asset('assets/css/bootstrap.min.css') }} rel="stylesheet" type="text/css" />
     <link href={{ asset('assets/css/icons.min.css') }} rel="stylesheet" type="text/css" />
     <link href={{ asset('assets/css/theme.min.css') }} rel="stylesheet" type="text/css" />
+    
 
     <link href={{ asset('../plugins/datatables/dataTables.bootstrap4.css') }} rel="stylesheet" type="text/css" />
     <link href={{ asset('../plugins/datatables/responsive.bootstrap4.css') }} rel="stylesheet" type="text/css" />
     <link href={{ asset('../plugins/datatables/buttons.bootstrap4.css') }} rel="stylesheet" type="text/css" />
     <link href={{ asset('../plugins/datatables/select.bootstrap4.css') }} rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    @hasanyrole('user|ormawa|pembina')
+    <link rel="stylesheet" href="{{ asset('assets/css/custom-sidebar.css') }}">
+    @endhasanyrole
+
+    @yield('head')
 
 </head>
+
+
 
 <body>
 
@@ -37,8 +49,6 @@
         <header id="page-topbar">
             @include('component.header')
         </header>
-
-        
 
         <!-- ========== Left Sidebar Start ========== -->
         @hasanyrole('user|ormawa|pembina')
@@ -102,6 +112,8 @@
     <script src={{ asset('assets/js/metismenu.min.js') }}></script>
     <script src={{ asset('assets/js/waves.js') }}></script>
     <script src={{ asset('assets/js/simplebar.min.js') }}></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <!-- Morris Js-->
     <script src={{ asset('../plugins/morris-js/morris.min.js') }}></script>

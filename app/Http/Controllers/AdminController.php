@@ -10,6 +10,7 @@ use App\Models\TargetSkim;
 use App\Models\TargetProker;
 use Illuminate\Http\Request;
 use App\Http\Middleware\Admin;
+use App\Models\Anggota;
 use App\Models\Mahasiswa;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\File;
@@ -19,7 +20,8 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('pages.dashboard.index');
+        
+        return view('pages.dashboard.admin');
     }
 
     public function show()

@@ -10,19 +10,22 @@ class Proker extends Model
     use HasFactory;
     public $timestamps = false;
     protected $table = "proker";
-    protected $fillable = ['id_mawa', 'jenis_kegiatan', 'kategori_kegiatan', 'skim_kegiatan', 'judul_kegiatan', 'nama_pic', 'nim_pic', 'kontak_pic', 'mulai', 'selesai', "sumber_dana", 'jumlah_dana', 'filenames'];
 
     public function ormawa()
     {
-        return $this->belongsTo(Ormawa::class, 'ormawa');
+        return $this->belongsTo(Ormawa::class, 'id_ormawa', 'id');
     }
-
-    public static function boot()
+    
+    public function mekanisme()
     {
-        parent::boot();
-
-        static::creating(function ($model) {
-            $model->number =  TargetProker::where('id', $model->id)->max('number') + 1;
-        });
+        return $this->belongsTo(Mekanisme::class, 'id_mekanisme_rancangan', 'id');
     }
+    // public static function boot()
+    // {
+    //     parent::boot();
+
+    //     static::creating(function ($model) {
+    //         $model->number =  TargetProker::where('id', $model->id)->max('number') + 1;
+    //     });
+    // }
 }

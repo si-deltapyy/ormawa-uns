@@ -56,6 +56,11 @@ class RoleSeeder extends Seeder
             'guard_name' => 'web'
         ]);
 
+        Permission::create([
+            'name' => 'pembina-ormawa',
+            'guard_name' => 'web'
+        ]);
+
 
 
     }

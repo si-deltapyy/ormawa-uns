@@ -10,4 +10,14 @@ class Ormawa extends Model
     use HasFactory;
     public $timestamps = false;
     protected $table = "ormawa";
+
+    protected $fillable = [
+        'UID',
+        'nama_ormawa',
+        'nama_id',
+    ];
+    public function anggota()
+    {
+        return $this->hasMany(Anggota::class);
+    }
 }

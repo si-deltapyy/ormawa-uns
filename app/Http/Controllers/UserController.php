@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anggota;
 use App\Models\Skim;
 use App\Models\User;
 use App\Models\Asset;
@@ -30,7 +31,12 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('pages.dashboard.index');
+        $proker = Proker::where('status_proker', 'Disetujui')->get();
+        $dataAnggota = Anggota::join('users', 'users.id', '=', 'anggota.user_id')
+            ->join('ormawa', 'ormawa.id', '=', 'anggota.ormawa_id')
+            ->where('user_id', '=', Auth::user()->id)
+            ->get(['anggota.*', 'users.name', 'ormawa.nama_ormawa']);
+        return view('pages.dashboard.user', compact('proker', 'dataAnggota'));
     }
 
     public function profile()

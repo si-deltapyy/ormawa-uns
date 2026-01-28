@@ -15,6 +15,11 @@ class Pembina
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
+        if (auth()->user()->hasRole('pembina')) {
+            return $next($request);
+        }
+
+        toast()->error('Access Denied', 'Akses terbatas hanya untuk user');
+        return redirect()->back();
     }
 }

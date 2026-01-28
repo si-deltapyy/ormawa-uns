@@ -1,0 +1,109 @@
+/* =========================================
+   1. Indikator Step Wizard
+   ========================================= */
+.step-indicators {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 15px;
+}
+
+.step-indicator {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    color: #6c757d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+}
+
+.step-indicator.active {
+    background-color: #0d6efd; /* Warna Primary Bootstrap */
+    color: white;
+}
+
+.step-indicator.completed {
+    background-color: #198754; /* Warna Success */
+    color: white;
+}
+
+.step-line {
+    flex-grow: 1;
+    height: 2px;
+    background-color: #e9ecef;
+    margin: 0 -5px; /* Supaya nyambung dengan lingkaran */
+    z-index: 0;
+}
+
+.step-line.active {
+    background-color: #198754;
+}
+
+/* Sembunyikan semua step kecuali yang aktif */
+.form-step {
+    display: none;
+}
+
+.form-step.active {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* =========================================
+   2. Select2 Custom Styling
+   ========================================= */
+/* Mengubah warna latar belakang tag yang dipilih menjadi Biru */
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #0d6efd !important;
+    border: 1px solid #0d6efd !important;
+    color: white !important;
+    border-radius: 4px;
+}
+
+/* Mengubah warna tombol silang (x) remove menjadi putih */
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: white !important;
+    margin-right: 10px;
+    border-right: 1px solid rgba(255,255,255,0.3);
+}
+
+/* Efek hover pada tombol X */
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+    background-color: rgba(255,255,255,0.2);
+    color: white !important;
+}
+
+/* =========================================
+   3. Sidebar Menu Active State
+   ========================================= */
+/* Mengubah warna teks dan icon menjadi Biru saat menu Aktif */
+#sidebar-menu ul li.mm-active > a,
+#sidebar-menu ul li.mm-active > a i, 
+#sidebar-menu ul li a.active,
+#sidebar-menu ul li a.active i {
+    color: #4090cb !important;
+    font-weight: 600;
+    background-color: #fafafa;
+}
+
+/* Mengubah warna teks saat cursor diarahkan (Hover) */
+#sidebar-menu ul li a:hover,
+#sidebar-menu ul li a:hover i {
+    color: #4090cb !important;
+}
+
+/* Perbaikan khusus untuk Sub-menu agar tetap terlihat */
+#sidebar-menu ul ul.sub-menu li.mm-active > a {
+    color: #4090cb !important;
+}
