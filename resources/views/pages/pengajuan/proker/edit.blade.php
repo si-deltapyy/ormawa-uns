@@ -5,6 +5,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 @endsection
 
+@section('title')
+    Edit Program Kerja - Ormawa UNS
+@endsection
+
 @section('content')
         <div class="row">
             <div class="col-12">
@@ -110,6 +114,39 @@
                                     <small class="text-muted">Tahan CTRL/Command untuk memilih lebih dari satu.</small>
                                 </div>
 
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold text-dark">Indikator SDGs (Bisa pilih lebih dari satu, Atau dikosongkan)</label>
+
+                                    <div class="border rounded p-3" style="height: 150px; overflow-y: auto; background-color: #fff;">
+                                        @php
+                                            $selectedSdgs = old('indikator_sdgs', isset($proker) ? explode(',', $proker->indikator_sdgs) : []);
+                                        @endphp
+
+                                        @foreach($sdgs as $item)
+                                            <div class="form-check">
+                                                <input class="form-check-input sdgs-item" type="checkbox" 
+                                                    value="{{ $item->id }}" 
+                                                    id="sdg_{{ $item->id }}" 
+                                                    name="indikator_sdgs[]"
+                                                    {{-- Cek apakah ID ini ada dalam array pilihan --}}
+                                                    @if(in_array($item->id, (array)$selectedSdgs)) checked @endif>
+                                                
+                                                <label class="form-check-label" for="sdg_{{ $item->id }}">
+                                                    {{ $item->nama_sdgs }}
+                                                </label>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                                                        
+                                    <small class="text-muted mt-1 d-block">Gulir ke bawah untuk melihat lebih banyak.</small>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="detail_sdgs" class="form-label fw-bold text-dark">Detail SDGs</label>
+                                    <textarea class="form-control" id="detail_sdgs" name="detail_sdgs" rows="3" 
+                                        placeholder="Berikan Detail SDGs yang dipilih...">{{ old('detail_sdgs', $proker->detail_sdgs) }}</textarea>    
+                                </div>
+
                                 {{-- Sasaran --}}
                                 <div class="mb-3">
                                     <label for="sasaran" class="form-label fw-bold text-dark">Sasaran Peserta</label>
@@ -168,8 +205,6 @@
                                 <h6 class="mb-3 text-primary">3. Detail Luaran</h6>
                                 {{-- Container ini akan diisi ulang oleh JS, tapi kita perlu mempassing data lama --}}
                                 <div id="container-detail-luaran">
-                                    {{-- Note: Input di sini biasanya digenerate JS berdasarkan dropdown step 1. 
-                                        Kita perlu script khusus di bawah untuk pre-fill data ini --}}
                                 </div>
                                 {{-- Hidden input untuk menyimpan data JSON luaran lama agar bisa dibaca JS --}}
                                 <textarea id="old_target_luaran" class="d-none">{{ $proker->target_luaran }}</textarea>
@@ -178,81 +213,89 @@
                             {{-- STEP 4: Mekanisme & Rancangan --}}
                             <div class="form-step" id="step-4">
                                 <h6 class="mb-3 text-primary">4. Mekanisme dan Rancangan</h6>
-
-                                {{-- A. Persiapan --}}
-                                <h4 class="mb-3 text-dark mt-3">A. Persiapan</h4>
+                                
+                                <br>
+                                <h4 class="mb-3 text-dark">A. Persiapan</h4>
                                 <div class="mb-3">
-                                    <label class="form-label fw-bold text-dark">Tanggal</label>
-                                    <input type="date" class="form-control" name="persiapan_tanggal" value="{{ old('persiapan_tanggal', $proker->mekanisme->persiapan_tanggal ?? '') }}" required>
+                                    <label for="persiapan_tempat" class="form-label fw-bold text-dark">Tempat</label>
+                                    <input type="text" class="form-control" id="persiapan_tempat" name="persiapan_tempat" required value="{{ old('persiapan_tempat', $proker->mekanisme->persiapan_tempat ?? '') }}">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="persiapan_tanggal_mulai" class="form-label fw-bold text-dark">Tanggal Mulai</label>
+                                        <input type="date" class="form-control" id="persiapan_tanggal_mulai" name="persiapan_tanggal_mulai" required value="{{ old('persiapan_tanggal_mulai', $proker->mekanisme->persiapan_tanggal_mulai ?? '') }}">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="persiapan_tanggal_selesai" class="form-label fw-bold text-dark">Tanggal Selesai</label>
+                                        <input type="date" class="form-control" id="persiapan_tanggal_selesai" name="persiapan_tanggal_selesai" required value="{{ old('persiapan_tanggal_selesai', $proker->mekanisme->persiapan_tanggal_selesai ?? '') }}">
+                                    </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label fw-bold text-dark">Tempat</label>
-                                    <input type="text" class="form-control" name="persiapan_tempat" value="{{ old('persiapan_tempat', $proker->mekanisme->persiapan_tempat ?? '') }}" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label fw-bold text-dark">Waktu</label>
-                                    <input type="text" class="form-control time-picker" name="persiapan_waktu" value="{{ old('persiapan_waktu', $proker->mekanisme->persiapan_waktu ?? '') }}" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label fw-bold text-dark">Deskripsi</label>
-                                    <textarea class="form-control" name="persiapan_deskripsi" rows="3">{{ old('persiapan_deskripsi', $proker->mekanisme->persiapan_deskripsi ?? '') }}</textarea>
-                                </div>
-
-                                {{-- B. Pelaksanaan --}}
-                                <h4 class="mb-3 text-dark mt-3">B. Pelaksanaan</h4>
-                                <div class="mb-3">
-                                    <label class="form-label fw-bold text-dark">Tanggal</label>
-                                    <input type="date" class="form-control" name="pelaksanaan_tanggal" value="{{ old('pelaksanaan_tanggal', $proker->mekanisme->pelaksanaan_tanggal ?? '') }}" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label fw-bold text-dark">Tempat</label>
-                                    <input type="text" class="form-control" name="pelaksanaan_tempat" value="{{ old('pelaksanaan_tempat', $proker->mekanisme->pelaksanaan_tempat ?? '') }}" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label fw-bold text-dark">Waktu</label>
-                                    <input type="text" class="form-control time-picker" name="pelaksanaan_waktu" value="{{ old('pelaksanaan_waktu', $proker->mekanisme->pelaksanaan_waktu ?? '') }}" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label fw-bold text-dark">Deskripsi</label>
-                                    <textarea class="form-control" name="pelaksanaan_deskripsi" rows="3">{{ old('pelaksanaan_deskripsi', $proker->mekanisme->pelaksanaan_deskripsi ?? '') }}</textarea>
+                                    <label for="persiapan_deskripsi" class="form-label fw-bold text-dark">Deskripsi</label>
+                                    <textarea class="form-control" id="persiapan_deskripsi" name="persiapan_deskripsi" rows="3" required>{{ old('persiapan_deskripsi', $proker->mekanisme->persiapan_deskripsi ?? '') }}</textarea>
                                 </div>
 
-                                {{-- C. Evaluasi --}}
-                                <h4 class="mb-3 text-dark mt-3">C. Evaluasi</h4>
+                                <br>
+                                <h4 class="mb-3 text-dark">B. Pelaksanaan</h4>
                                 <div class="mb-3">
-                                    <label class="form-label fw-bold text-dark">Tanggal</label>
-                                    <input type="date" class="form-control" name="evaluasi_tanggal" value="{{ old('evaluasi_tanggal', $proker->mekanisme->evaluasi_tanggal ?? '') }}" required>
+                                    <label for="pelaksanaan_tempat" class="form-label fw-bold text-dark">Tempat</label>
+                                    <input type="text" class="form-control" id="pelaksanaan_tempat" name="pelaksanaan_tempat" required value="{{ old('pelaksanaan_tempat', $proker->mekanisme->pelaksanaan_tempat ?? '') }}">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="pelaksanaan_tanggal_mulai" class="form-label fw-bold text-dark">Tanggal Mulai</label>
+                                        <input type="date" class="form-control" id="pelaksanaan_tanggal_mulai" name="pelaksanaan_tanggal_mulai" required value="{{ old('pelaksanaan_tanggal_mulai', $proker->mekanisme->pelaksanaan_tanggal_mulai ?? '') }}">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="pelaksanaan_tanggal_selesai" class="form-label fw-bold text-dark">Tanggal Selesai</label>
+                                        <input type="date" class="form-control" id="pelaksanaan_tanggal_selesai" name="pelaksanaan_tanggal_selesai" required value="{{ old('pelaksanaan_tanggal_selesai', $proker->mekanisme->pelaksanaan_tanggal_selesai ?? '') }}">
+                                    </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label fw-bold text-dark">Tempat</label>
-                                    <input type="text" class="form-control" name="evaluasi_tempat" value="{{ old('evaluasi_tempat', $proker->mekanisme->evaluasi_tempat ?? '') }}" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label fw-bold text-dark">Waktu</label>
-                                    <input type="text" class="form-control time-picker" name="evaluasi_waktu" value="{{ old('evaluasi_waktu', $proker->mekanisme->evaluasi_waktu ?? '') }}" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label fw-bold text-dark">Deskripsi</label>
-                                    <textarea class="form-control" name="evaluasi_deskripsi" rows="3">{{ old('evaluasi_deskripsi', $proker->mekanisme->evaluasi_deskripsi ?? '') }}</textarea>
+                                    <label for="pelaksanaan_deskripsi" class="form-label fw-bold text-dark">Deskripsi</label>
+                                    <textarea class="form-control" id="pelaksanaan_deskripsi" name="pelaksanaan_deskripsi" rows="3" required>{{ old('pelaksanaan_deskripsi', $proker->mekanisme->pelaksanaan_deskripsi ?? '') }}</textarea>
                                 </div>
 
-                                {{-- D. Pelaporan --}}
-                                <h4 class="mb-3 text-dark mt-3">D. Pelaporan</h4>
+                                <br>
+                                <h4 class="mb-3 text-dark">C. Evaluasi</h4>
                                 <div class="mb-3">
-                                    <label class="form-label fw-bold text-dark">Tanggal</label>
-                                    <input type="date" class="form-control" name="pelaporan_tanggal" value="{{ old('pelaporan_tanggal', $proker->mekanisme->pelaporan_tanggal ?? '') }}" required>
+                                    <label for="evaluasi_tempat" class="form-label fw-bold text-dark">Tempat</label>
+                                    <input type="text" class="form-control" id="evaluasi_tempat" name="evaluasi_tempat" required value="{{ old('evaluasi_tempat', $proker->mekanisme->evaluasi_tempat ?? '') }}">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="evaluasi_tanggal_mulai" class="form-label fw-bold text-dark">Tanggal Mulai</label>
+                                        <input type="date" class="form-control" id="evaluasi_tanggal_mulai" name="evaluasi_tanggal_mulai" required value="{{ old('evaluasi_tanggal_mulai', $proker->mekanisme->evaluasi_tanggal_mulai ?? '') }}">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="evaluasi_tanggal_selesai" class="form-label fw-bold text-dark">Tanggal Selesai</label>
+                                        <input type="date" class="form-control" id="evaluasi_tanggal_selesai" name="evaluasi_tanggal_selesai" required value="{{ old('evaluasi_tanggal_selesai', $proker->mekanisme->evaluasi_tanggal_selesai ?? '') }}">
+                                    </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label fw-bold text-dark">Tempat</label>
-                                    <input type="text" class="form-control" name="pelaporan_tempat" value="{{ old('pelaporan_tempat', $proker->mekanisme->pelaporan_tempat ?? '') }}" required>
+                                    <label for="evaluasi_deskripsi" class="form-label fw-bold text-dark">Deskripsi</label>
+                                    <textarea class="form-control" id="evaluasi_deskripsi" name="evaluasi_deskripsi" rows="3" required>{{ old('evaluasi_deskripsi', $proker->mekanisme->evaluasi_deskripsi ?? '') }}</textarea>
+                                </div>
+
+                                <br>
+                                <h4 class="mb-3 text-dark">D. Pelaporan</h4>
+                                <div class="mb-3">
+                                    <label for="pelaporan_tempat" class="form-label fw-bold text-dark">Tempat</label>
+                                    <input type="text" class="form-control" id="pelaporan_tempat" name="pelaporan_tempat" required value="{{ old('pelaporan_tempat', $proker->mekanisme->pelaporan_tempat ?? '') }}">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="pelaporan_tanggal_mulai" class="form-label fw-bold text-dark">Tanggal Mulai</label>
+                                        <input type="date" class="form-control" id="pelaporan_tanggal_mulai" name="pelaporan_tanggal_mulai" required value="{{ old('pelaporan_tanggal_mulai', $proker->mekanisme->pelaporan_tanggal_mulai ?? '') }}">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="pelaporan_tanggal_selesai" class="form-label fw-bold text-dark">Tanggal Selesai</label>
+                                        <input type="date" class="form-control" id="pelaporan_tanggal_selesai" name="pelaporan_tanggal_selesai" required value="{{ old('pelaporan_tanggal_selesai', $proker->mekanisme->pelaporan_tanggal_selesai ?? '') }}">
+                                    </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label fw-bold text-dark">Waktu</label>
-                                    <input type="text" class="form-control time-picker" name="pelaporan_waktu" value="{{ old('pelaporan_waktu', $proker->mekanisme->pelaporan_waktu ?? '') }}" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label fw-bold text-dark">Deskripsi</label>
-                                    <textarea class="form-control" name="pelaporan_deskripsi" rows="3">{{ old('pelaporan_deskripsi', $proker->mekanisme->pelaporan_deskripsi ?? '') }}</textarea>
+                                    <label for="pelaporan_deskripsi" class="form-label fw-bold text-dark">Deskripsi</label>
+                                    <textarea class="form-control" id="pelaporan_deskripsi" name="pelaporan_deskripsi" rows="3" required>{{ old('pelaporan_deskripsi', $proker->mekanisme->pelaporan_deskripsi ?? '') }}</textarea>
                                 </div>
                             </div>
 

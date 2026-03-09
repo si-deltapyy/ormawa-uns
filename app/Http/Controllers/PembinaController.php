@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Anggota;
+use App\Models\LogsAjuan;
+use App\Models\Proker;
 use Illuminate\Http\Request;
 
 class PembinaController extends Controller
@@ -32,5 +34,26 @@ class PembinaController extends Controller
         toast()->success('Berhasil', 'Anggota telah dinonaktifkan.');
 
         return redirect()->back();
+    }
+
+    public function assignProker($id)
+    {
+        try {
+            $logs = new LogsAjuan();
+            $logs->proker_id = $id;
+            $logs->action = 'Prosess Review Pembina';
+            $logs->description = 'Proker telah ditugaskan ke pembina untuk ditinjau.';
+            $logs->status = 'Proses Pembina';
+            $logs->updated_by = auth()->user()->id;
+            $logs->save();
+
+            Proker::where('id', $id)->update(['status_proker' => 'Proses Pembina']);
+            toast()->success('Berhasil', 'Proker telah ditugaskan ke pembina untuk ditinjau.');
+            return redirect()->back();
+
+        } catch (\Exception $e) {
+            toast()->error('Gagal', 'Proker tidak ditemukan.');
+            return redirect()->back();
+        }
     }
 }

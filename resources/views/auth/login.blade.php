@@ -279,7 +279,7 @@
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control @error('email') is-invalid @enderror" 
                                    id="email" name="email" placeholder="name@example.com" value="{{ old('email') }}" required autofocus>
-                            <label for="email">Alamat Email UNS / SSO</label>
+                            <label for="email">Email</label>
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -298,9 +298,11 @@
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-login mb-3">
+                        <button type="submit" class="btn btn-login ">
                             Masuk Sekarang
                         </button>
+
+                        <div class="divider-text small">Atau</div>
 
                         <a href="" class="btn btn-login-sso mb-3">
                            <i class="fas fa-university me-2"></i> Login SSO
@@ -308,16 +310,18 @@
 
                     </form>
 
-                    <div class="divider-text small">Atau</div>
+                    
+
+                    {{--
 
                     <div class="text-center">
                         <p class="text-muted small">Belum memiliki akun ormawa? 
                             <a href="{{ route('register') }}" class="text-primary text-decoration-none fw-bold ms-1">Daftar Sekarang</a>
                         </p>
-                    </div>
+                    </div> --}}
                     
                     <div class="mt-5 text-center text-muted" style="font-size: 0.8rem;">
-                        &copy; {{ date('Y') }} Universitas Sebelas Maret
+                        &copy; {{ date('Y') }} Direktorat Kemahasiswaan Universitas Sebelas Maret
                     </div>
 
                 </div>

@@ -9,4 +9,9 @@ class LogsAjuan extends Model
 {
     use HasFactory;
     protected $table = 'logs_ajuan_proker';
+
+    public function proker()
+    {
+        return $this->belongsTo(Proker::class, 'proker_id', 'id');
+    }
 }

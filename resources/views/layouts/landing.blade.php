@@ -184,7 +184,7 @@
             </div>
             <hr class="my-4">
             <div class="text-center text-muted small pb-3">
-                &copy; {{ date('Y') }} Universitas Sebelas Maret. All rights reserved.
+                &copy; {{ date('Y') }} Direktorat Kemahasiswaan Universitas Sebelas Maret. All rights reserved.
             </div>
         </div>
     </footer>

@@ -11,17 +11,91 @@ use App\Models\TargetProker;
 use Illuminate\Http\Request;
 use App\Http\Middleware\Admin;
 use App\Models\Anggota;
+use App\Models\Indikator;
+use App\Models\IndikatorKinerja;
+use App\Models\LogsAjuan;
 use App\Models\Mahasiswa;
+use App\Models\RABModel;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\File;
 use PHPUnit\Framework\Attributes\IgnoreFunctionForCodeCoverage;
+
+use function Symfony\Component\String\s;
 
 class AdminController extends Controller
 {
     public function index()
     {
+        $indikator = Indikator::all();
+        $jumlahProker = Proker::all();
         
-        return view('pages.dashboard.admin');
+        $dataproker = Proker::with('ormawa')->latest()->take(5)->get();
+        $statsSkim = Skim::withCount('prokers')->get();
+        
+        $rabSum = RABModel::sum('total_biaya');
+        $rabAcc = RABModel::whereHas('proker', function($query) {
+            $query->where('status_rab', 'Disetujui');
+        })->sum('total_biaya');
+
+        $labelsSkim = $statsSkim->pluck('nama_skim')->toArray();
+        $dataSkim = $statsSkim->pluck('prokers_count')->toArray() ;
+
+        return view('pages.dashboard.admin', compact(
+            'jumlahProker', 
+            'dataproker', 
+            'labelsSkim', 
+            'dataSkim',
+            'indikator',
+            'rabSum',
+            'rabAcc'
+        ));
+    }
+
+    public function review()
+    {
+        $ormawa = Ormawa::withCount('prokers')->get();
+        return view('pages.admin.review.index', compact('ormawa'));
+    }
+
+    public function listProker($id)
+    {
+        $ormawa = Ormawa::find($id);
+        $proker = Proker::where('id_ormawa', $id)->with('indikator', 'rab')->get();
+        return view('pages.admin.review.list-proker', compact('ormawa', 'proker'));
+    }
+
+    public function listRab($id)
+    {
+        $ormawa = Ormawa::find($id);
+        $proker = Proker::where('id_ormawa', $id)->with('indikator', 'rab')->get();
+        return view('pages.admin.review.list-rab', compact('ormawa', 'proker'));
+    }
+
+    public function revisi(Request $request, $id)
+    {
+        $proker = Proker::find($id);
+        $rab = RABModel::where('proker_id', $id)->first();
+
+        $proker->notes = 'Reviewer: ' . $request->input('catatan_tor');
+        $rab->catatan = 'Reviewer: ' . $request->input('catatan_rab');
+        $proker->status_rab = 'Revisi';
+        $proker->status_proker = 'revisi';
+
+        $proker->update();
+        $rab->update();
+
+        $logs = new LogsAjuan();
+        $logs->proker_id = $id;
+        $logs->action = 'Permintaan Revisi Proker';
+        $logs->description = 'Proker memerlukan revisi. Catatan: TOR' . $request->input('catatan_tor') . ' | RAB: ' . $request->input('catatan_rab');
+        $logs->status = 'Revisi';
+        $logs->updated_by = auth()->user()->id;
+        $logs->created_at = now('Asia/Jakarta');
+        $logs->updated_at = now('Asia/Jakarta');
+        $logs->save();
+
+        toast()->info('Revisi Telah Dikirim','Proker telah direvisi dan dikembalikan ke ormawa untuk diperbaiki.');
+        return redirect()->route('admin.review.proker');
     }
 
     public function show()

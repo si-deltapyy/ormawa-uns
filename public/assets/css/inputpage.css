@@ -107,3 +107,91 @@
 #sidebar-menu ul ul.sub-menu li.mm-active > a {
     color: #4090cb !important;
 }
+
+.tracking-list {
+        border-left: 2px solid #e9ecef;
+        margin-left: 20px;
+        padding-left: 30px;
+        position: relative;
+        list-style: none;
+    }
+
+    .tracking-item {
+        position: relative;
+        padding-bottom: 30px;
+    }
+
+    /* Garis dan Titik */
+    .tracking-item::before {
+        content: "";
+        position: absolute;
+        left: -37px; /* Sesuaikan agar pas di tengah garis */
+        top: 0;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background-color: #fff;
+        border: 3px solid #ced4da; /* Warna default (abu-abu) */
+        z-index: 1;
+    }
+
+    /* Item Terakhir (Paling atas/terbaru) - Warna Biru/Hijau */
+    .tracking-item.active::before {
+        background-color: #fff;
+        border-color: #007bff; /* Warna Primary */
+        width: 18px;
+        height: 18px;
+        left: -39px;
+        box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.2);
+    }
+
+    /* Item Selesai/Sukses - Warna Hijau */
+    .tracking-item.success::before {
+        border-color: #28a745;
+    }
+    
+    /* Item Ditolak - Warna Merah */
+    .tracking-item.danger::before {
+        border-color: #dc3545;
+    }
+
+    .tracking-date {
+        font-size: 0.85rem;
+        color: #888;
+        margin-bottom: 5px;
+        font-weight: 600;
+    }
+
+    .tracking-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    .tracking-desc {
+        font-size: 0.9rem;
+        color: #666;
+        background: #f8f9fa;
+        padding: 10px;
+        border-radius: 5px;
+        border-left: 3px solid #dee2e6;
+    }
+
+    /* Garis Penghubung (Line) */
+    .tracking-list::before {
+        content: "";
+        position: absolute;
+        /* Garis ini dibuat oleh border-left di .tracking-list */
+    }
+
+    .timer-box {
+        background: #f8f9fa;
+        padding: 10px 15px;
+        border-radius: 8px;
+        min-width: 80px;
+        border: 1px solid #dee2e6;
+    }
+    #countdown-wrapper .h2 {
+        font-family: 'Courier New', Courier, monospace; /* Gaya digital */
+    }

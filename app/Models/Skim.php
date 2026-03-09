@@ -17,4 +17,14 @@ class Skim extends Model
     ];
 
     public $timestamps = false;
+
+    public function indikatorKinerja()
+    {
+        return $this->hasMany(IndikatorKinerja::class, 'group_skim_id', 'id');
+    }
+
+    public function prokers()
+    {
+        return $this->hasMany(Proker::class, 'id_skim', 'id');
+    }
 }

@@ -23,6 +23,7 @@
     <link href={{ asset('assets/css/bootstrap.min.css') }} rel="stylesheet" type="text/css" />
     <link href={{ asset('assets/css/icons.min.css') }} rel="stylesheet" type="text/css" />
     <link href={{ asset('assets/css/theme.min.css') }} rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
 
     <link href={{ asset('../plugins/datatables/dataTables.bootstrap4.css') }} rel="stylesheet" type="text/css" />
@@ -63,7 +64,7 @@
                     <a href="javascript:void(0);" class="logo">
                         @hasanyrole('admin|super-admin|stakeholder')
                         <span>
-                            ORMAWA UNS
+                            DIRMAWA UNS
                         </span>
                         @endhasanyrole
                         @hasanyrole('user|ormawa|pembina')

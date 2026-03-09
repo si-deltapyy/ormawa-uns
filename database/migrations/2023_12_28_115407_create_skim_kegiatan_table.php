@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('skim_kegiatan', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_skim');
             $table->string('nama_skim');
             $table->timestamps();
         });

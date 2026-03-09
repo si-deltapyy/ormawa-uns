@@ -9,4 +9,9 @@ class mak extends Model
 {
     use HasFactory;
     protected $table = "mak";
+
+    public function rabProker()
+    {
+        return $this->hasMany(RABModel::class, 'mak_id', 'id' );
+    }
 }

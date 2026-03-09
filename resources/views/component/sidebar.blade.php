@@ -2,10 +2,12 @@
     <!-- Left Menu Start -->
     <ul class="metismenu list-unstyled" id="side-menu">
         {{-- Role Admin --}}
-        @role('admin')
+        @role('super-admin')
         <li>
-            <a href="{{ route('admin.index') }}" class="waves-effect"><i class="feather-airplay"></i><span
-                    class="badge badge-pill badge-primary float-right">7</span><span>Dashboard</span></a>
+            <a href="{{ route('admin.index') }}" class="waves-effect"><i class="feather-airplay"></i>
+                {{-- <span class="badge badge-pill badge-primary float-right">7</span> --}}
+                <span>Dashboard</span>
+            </a>
         </li>
         <li>
             <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="feather-users"></i>
@@ -25,12 +27,67 @@
         </li>
         @endrole
 
+        @role('admin')
+        
+        <li class="menu-title">Menu</li>
+        <li>
+            <a href="{{ route('admin.index') }}" class="waves-effect"><i class="feather-airplay"></i>
+                {{-- <span class="badge badge-pill badge-primary float-right">7</span> --}}
+                <span>Dashboard</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.review.proker') }}" class="waves-effect"><i
+                class="feather-file-plus"></i>
+                @if (Auth::user()->name == 'Admin TOR')
+                    <span>Review Proker</span>
+                @elseif (Auth::user()->name == 'Admin RAB')
+                    <span>Review RAB</span>
+                @endif
+            </a>
+        </li>
+        <li>
+            <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="feather-users"></i>
+                <span>Data Surat</span></a>
+            <ul class="sub-menu" aria-expanded="false">
+                <li><a href="#">SPJ</a></li>
+                <li><a href="#">LPJ</a></li>
+                <li><a href="#">SK</a></li>
+                <li><a href="#">Surat Masuk</a></li>
+                <li><a href="#">Surat Keluar</a></li>
+            </ul>
+        </li>
+        <li class="menu-title">Setting</li>
+        
+        <li>
+            <a href="#" class="waves-effect"><i
+                    class="feather-book"></i><span>Log Aktivitas</span></a>
+        </li>
+        <li>
+            <a href="javascript: void(0);" class="has-arrow waves-effect"><i
+                    class="feather-settings"></i><span>Pengaturan</span></a>
+            <ul class="sub-menu" aria-expanded="false">
+                <li><a href="#">Atur Timeline</a></li>
+                <li><a href="#">Pengaturan Aplikasi</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" class="waves-effect"><i
+                    class="mdi mdi-whatsapp"></i><span>Whatsapp Config</span></a>
+        </li>
+        <li>
+            <a href="#" class="waves-effect"><i
+                    class="feather-help-circle"></i><span>Help & Support</span></a>
+        </li>
+        @endrole
+
         {{-- Role User --}}
         @role('user')
         <li class="menu-title">Menu</li>
         <li>
-            <a href="{{ route('user.index') }}" class="waves-effect" ><i class="feather-airplay"></i><span
-                    class="badge badge-pill badge-primary float-right">7</span><span>Dashboard</span></a>
+            <a href="{{ route('user.index') }}" class="waves-effect" ><i class="feather-airplay"></i>
+                {{-- <span class="badge badge-pill badge-primary float-right">7</span> --}}
+                <span>Dashboard</span></a>
         </li>
         @can('ketua-ormawa')
         <li>
@@ -58,16 +115,16 @@
         @can('pembina-ormawa')
             <li>
                 <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="mdi mdi-file-document-box-plus-outline"></i>
-                    <span>Pengajuan</span></a>
+                    <span>Program Kerja</span></a>
                 <ul class="sub-menu" aria-expanded="false">
-                    <li><a href="{{ route('user.ajuan.proker') }}">Pratinjau Proker</a></li>
+                    <li><a href="{{ route('user.ajuan.proker') }}">Review</a></li>
                 </ul>
             </li>
         @endcan
-        <li>
+        {{-- <li>
             <a href="#" class="waves-effect sidebar-link disabled"><i class="feather-bell"></i><span
                     class="badge badge-pill badge-danger float-right">6</span><span><del>Notifikasi</del></span></a>
-        </li>
+        </li> --}}
 
         
         <li class="menu-title">Data</li>
@@ -79,6 +136,7 @@
                 {{-- <li><a href="#">Informasi</a></li>
                 <li><a href="#">Dokumen</a></li> --}}
                 <li><a href="#">Anggota</a></li>
+                <li><a href="{{ route('user.input.indikator.edit', Auth::user()->anggota->ormawa_id) }}">Update Indikator Utama</a></li>
             </ul>
         </li>
         <li>
@@ -112,8 +170,18 @@
                         class="badge badge-pill badge-primary float-right"></span><span><del>Jadwal Ormawa</del></span></a>
             </li>
         @endrole
+        {{-- Logout --}}
+            <li style="position: absolute; bottom: 20px; width: 100%; border-top: 1px solid rgba(255,255,255,0.1); background-color: inherit;">
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button type="submit" class="dropdown-item d-flex align-items-center text-danger mb-2">
+                        <i class="mdi mdi-logout mr-2 text-danger font-16"></i> Logout
+                    </button>
+                </form>
+            </li>
     </ul>
 </div> 
+
 
 
 {{-- <div id="sidebar-menu">

@@ -1,147 +1,166 @@
 @extends('layouts.dashboard')
 
 @section('title')
-    Admin Page - Organisasi Mahasiswa Universitas Sebelas Maret
+    Admin - Organisasi Mahasiswa Universitas Sebelas Maret
 @endsection
 
 @section('content')
 
 <div class="row">
-    <div class="col-12">
-        <div class="page-title-box d-flex align-items-center justify-content-between">
-            <h4 class="mb-0 font-size-18">Dashboard</h4>
+    <div class="col-md-6 col-xl-3">
+        <div class="card bg-white border-[#f1f3f6]">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-primary float-right"></span>
+                    <h5 class="card-title mb-0 text-primary">Proker Yang Diajukan</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center mb-0 text-black">
+                            {{ $jumlahProker->count() }}
+                        </h2>
+                    </div>
+                </div>
 
-            <div class="page-title-right">
-                <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">Xacton</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
+                @php
+                    $total = $jumlahProker->count();
+                    $diterima = $jumlahProker->where('status_proker', 'Diajukan')->count();
+                    $persenDiterima = $total > 0 ? ($diterima / $total) * 100 : 0;
+                @endphp
+
+                <div class="progress badge-soft-primary shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: {{ $persenDiterima }}%;"></div>
+                </div>
             </div>
+        </div>
+    </div> 
 
+    <div class="col-md-6 col-xl-3">
+        <div class="card bg-white border-[#f1f3f6]">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-info float-right"></span>
+                    <h5 class="card-title mb-0 text-info">Proker Diterima</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center mb-0 text-black">
+                            {{ $jumlahProker->where('status_proker', 'Disetujui')->count() }}
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-info shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: {{ ($jumlahProker->where('status_proker', 'Diterima')->count())/10 }}%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card bg-white border-[#f1f3f6]">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-danger float-right"></span>
+                    <h5 class="card-title mb-0 text-danger">Proker Ditolak</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center mb-0 text-black">
+                            {{ $jumlahProker->where('status_proker', 'Ditolak')->count() }}
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-danger shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: {{ ($jumlahProker->where('status_proker', 'Ditolak')->count())/10 }}%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card bg-white border-[#f1f3f6]">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-success float-right"></span>
+                    <h5 class="card-title mb-0 text-success">Proker Aktif</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center mb-0 text-black">
+                            {{ $jumlahProker->where('status_aktif', 'Aktif')->count() }}
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-success shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ ($jumlahProker->where('status_aktif', 'Aktif')->count() / max($jumlahProker->count(), 1)) * 100 }}%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card bg-white border-[#f1f3f6]">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-success float-right"></span>
+                    <h5 class="card-title mb-0 text-success">Total Anggaran Disetujui</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center mb-0 text-black">
+                           Rp {{ number_format($rabAcc, 0, ',', '.') }}
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-success shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ ($rabSum > 0) ? ($rabAcc/$rabSum*100) : 0 }}%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card bg-white border-[#f1f3f6]">
+            <div class="card-body">
+                <div class="mb-4">
+                    <span class="badge badge-soft-secondary float-right"></span>
+                    <h5 class="card-title mb-0 text-secondary">Total Anggaran Diajukan</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    <div class="col-8">
+                        <h2 class="d-flex align-items-center mb-0 text-black">
+                            Rp {{ number_format($rabSum, 0, ',', '.') }}
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="progress badge-soft-secondary shadow-sm" style="height: 5px;">
+                    <div class="progress-bar bg-secondary" role="progressbar" style="width: {{ ($rabSum > 0) ? ($rabAcc/$rabSum*100) : 0 }}%;"></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<!-- end page title -->
 
-<div class="row">
-    <div class="col-md-6 col-xl-3">
-        <div class="card bg-primary border-primary">
-            <div class="card-body">
-                <div class="mb-4">
-                    <span class="badge badge-soft-light float-right">Daily</span>
-                    <h5 class="card-title mb-0 text-white">Cost per Unit</h5>
-                </div>
-                <div class="row d-flex align-items-center mb-4">
-                    <div class="col-8">
-                        <h2 class="d-flex align-items-center mb-0 text-white">
-                            $17.21
-                        </h2>
-                    </div>
-                    <div class="col-4 text-right">
-                        <span class="text-white-50">12.5% <i class="mdi mdi-arrow-up"></i></span>
-                    </div>
-                </div>
-
-                <div class="progress badge-soft-light shadow-sm" style="height: 5px;">
-                    <div class="progress-bar bg-light" role="progressbar" style="width: 38%;"></div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- end col-->
-
-    <div class="col-md-6 col-xl-3">
-        <div class="card bg-success border-success">
-            <div class="card-body">
-                <div class="mb-4">
-                    <span class="badge badge-soft-light float-right">Per Week</span>
-                    <h5 class="card-title mb-0 text-white">Market Revenue</h5>
-                </div>
-                <div class="row d-flex align-items-center mb-4">
-                    <div class="col-8">
-                        <h2 class="d-flex align-items-center text-white mb-0">
-                            $1875.54
-                        </h2>
-                    </div>
-                    <div class="col-4 text-right">
-                        <span class="text-white-50">18.71% <i class="mdi mdi-arrow-down"></i></span>
-                    </div>
-                </div>
-
-                <div class="progress badge-soft-light shadow-sm" style="height: 7px;">
-                    <div class="progress-bar bg-light" role="progressbar" style="width: 38%;"></div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- end col-->
-
-    <div class="col-md-6 col-xl-3">
-        <div class="card bg-warning border-warning">
-            <div class="card-body">
-                <div class="mb-4">
-                    <span class="badge badge-soft-light float-right">Per Month</span>
-                    <h5 class="card-title mb-0 text-white">Expenses</h5>
-                </div>
-                <div class="row d-flex align-items-center mb-4">
-                    <div class="col-8">
-                        <h2 class="d-flex align-items-center text-white mb-0">
-                            $784.62
-                        </h2>
-                    </div>
-                    <div class="col-4 text-right">
-                        <span class="text-white-50">57% <i class="mdi mdi-arrow-up"></i></span>
-                    </div>
-                </div>
-
-                <div class="progress badge-soft-light shadow-sm" style="height: 7px;">
-                    <div class="progress-bar bg-light" role="progressbar" style="width: 68%;"></div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- end col-->
-
-    <div class="col-md-6 col-xl-3">
-        <div class="card bg-info border-info">
-            <div class="card-body">
-                <div class="mb-4">
-                    <span class="badge badge-soft-light float-right">All Time</span>
-                    <h5 class="card-title mb-0 text-white">Daily Visits</h5>
-                </div>
-                <div class="row d-flex align-items-center mb-4">
-                    <div class="col-8">
-                        <h2 class="d-flex align-items-center text-white mb-0">
-                            1,15,187
-                        </h2>
-                    </div>
-                    <div class="col-4 text-right">
-                        <span class="text-white-50">17.8% <i class="mdi mdi-arrow-down"></i></span>
-                    </div>
-                </div>
-
-                <div class="progress badge-soft-light shadow-sm" style="height: 7px;">
-                    <div class="progress-bar bg-light" role="progressbar" style="width: 57%;"></div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- end col-->
-</div>
-<!-- end row -->
-
+@role('admin')
 <div class="row">
 
     <div class="col-lg-6">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body"> <h4 class="card-title d-inline-block">Ajuan Skim</h4>
+                <p class="card-subtitle mb-4">Total Pengajuan Proker per Skim</p>
 
-                <h4 class="card-title d-inline-block">Total Revenue</h4>
-                <p class="card-subtitle mb-4">Example of line pie chart js.</p>
+                <div style="position: relative; height: 320px;">
+                    <canvas id="ormawa-pie"></canvas>
+                </div>
 
-                <canvas id="ormawa-pie"></canvas>
+            </div> 
+        </div> 
+    </div>
 
-            </div> <!-- end card-body-->
-        </div> <!-- end card-->
-    </div> <!-- end col -->
-
-    <div class="col-xl-6">
+    {{-- <div class="col-xl-6">
         <div class="card">
             <div class="card-body">
 
@@ -152,247 +171,110 @@
 
             </div> <!-- end card-body-->
         </div> <!-- end card-->
-    </div> <!-- end col -->
-</div>
-<!-- end row-->
+    </div>  --}}
 
-<div class="row">
-    <div class="col-xl-12">
+    <div class="col-xl-6">
         <div class="card">
             <div class="card-body">
 
-                <h4 class="card-title">Recent Buyers</h4>
-                <p class="card-subtitle mb-4 font-size-13">Transaction period from 21 July to 25 Aug
+                <h4 class="card-title">Ajuan Proker</h4>
+                <p class="card-subtitle mb-4 font-size-13">Laporan pengajuan proker terbaru.
                 </p>
 
-                <div class="table-responsive">
+                <div class="table-responsive" style="height: 300px;">
                     <table class="table table-centered table-hover table-xl mb-0" id="recent-orders">
                         <thead>
                             <tr>
-                                <th class="border-top-0">Product</th>
-                                <th class="border-top-0">Customers</th>
-                                <th class="border-top-0">Categories</th>
-                                <th class="border-top-0">Popularity</th>
-                                <th class="border-top-0">Amount</th>
+                                <th class="border-top-0">ID Kegiatan</th>
+                                <th class="border-top-0">Ormawa</th>
+                                <th class="border-top-0">Status</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @forelse ($dataproker as $data)
                             <tr>
-                                <td class="text-truncate">iPone X</td>
-                                <td class="text-truncate">Tiffany W. Yang</td>
+                                <td>{{ $data->id_kegiatan }}</td>
                                 <td>
-                                    <span class="badge badge-soft-secondary p-2">Mobile</span>
+                                    <h5 class="font-size-14 mb-1">{{ $data->ormawa->nama_ormawa }}</h5>
                                 </td>
                                 <td>
-                                    <div class="progress" style="height: 6px;">
-                                        <div class="progress-bar progress-bar-striped bg-secondary"
-                                            role="progressbar" aria-valuenow="85"
-                                            aria-valuemin="20" aria-valuemax="100"
-                                            style="width:85%"></div>
+                                     <div class="text-dark fw-bold">
+                                        {{ \Carbon\Carbon::parse($data->created_at)->isoFormat('dddd, D MMMM Y') }}
                                     </div>
+                                    <span class="badge badge-soft-success text-success mt-1">
+                                        <i class="mdi mdi-clock-outline mr-1"></i> 
+                                        {{ \Carbon\Carbon::parse($data->created_at)->format('H:i') }} WIB
+                                    </span>
                                 </td>
-                                <td class="text-truncate">$ 1200.00</td>
                             </tr>
-                            <tr>
-                                <td class="text-truncate">iPad</td>
-                                <td class="text-truncate">Dale P. Warman</td>
-                                <td>
-                                    <span class="badge badge-soft-secondary p-2">Tablet</span>
-                                </td>
-                                <td>
-                                    <div class="progress" style="height: 6px;">
-                                        <div class="progress-bar progress-bar-striped bg-secondary"
-                                            role="progressbar" aria-valuenow="72"
-                                            aria-valuemin="20" aria-valuemax="100"
-                                            style="width:72%"></div>
-                                    </div>
-                                </td>
-                                <td class="text-truncate">$ 1190.00</td>
-                            </tr>
-                            <tr>
-                                <td class="text-truncate">OnePlus</td>
-                                <td class="text-truncate">Garth J. Terry</td>
-                                <td>
-                                    <span class="badge badge-soft-secondary p-2">Electronics</span>
-                                </td>
-                                <td>
-                                    <div class="progress" style="height: 6px;">
-                                        <div class="progress-bar progress-bar-striped bg-secondary"
-                                            role="progressbar" aria-valuenow="43"
-                                            aria-valuemin="20" aria-valuemax="100"
-                                            style="width:43%"></div>
-                                    </div>
-                                </td>
-                                <td class="text-truncate">$ 999.00</td>
-                            </tr>
-                            <tr>
-                                <td class="text-truncate">ZenPad</td>
-                                <td class="text-truncate">Marilyn D. Bailey</td>
-                                <td>
-                                    <span class="badge badge-soft-secondary p-2">Cosmetics</span>
-                                </td>
-                                <td>
-                                    <div class="progress" style="height: 6px;">
-                                        <div class="progress-bar progress-bar-striped bg-secondary"
-                                            role="progressbar" aria-valuenow="37"
-                                            aria-valuemin="20" aria-valuemax="100"
-                                            style="width:37%"></div>
-                                    </div>
-                                </td>
-                                <td class="text-truncate">$ 1150.00</td>
-                            </tr>
-                            <tr>
-                                <td class="text-truncate">Pixel 2</td>
-                                <td class="text-truncate">Denise R. Vaughan</td>
-                                <td>
-                                    <span class="badge badge-soft-secondary p-2">Appliences</span>
-                                </td>
-                                <td>
-                                    <div class="progress" style="height: 6px;">
-                                        <div class="progress-bar progress-bar-striped bg-secondary"
-                                            role="progressbar" aria-valuenow="82"
-                                            aria-valuemin="20" aria-valuemax="100"
-                                            style="width:82%"></div>
-                                    </div>
-                                </td>
-                                <td class="text-truncate">$ 1180.00</td>
-                            </tr>
-                            <tr>
-                                <td class="text-truncate">Pixel 2</td>
-                                <td class="text-truncate">Jeffery R. Wilson</td>
-                                <td>
-                                    <span class="badge badge-soft-secondary p-2">Mobile</span>
-                                </td>
-                                <td>
-                                    <div class="progress" style="height: 6px;">
-                                        <div class="progress-bar progress-bar-striped bg-secondary"
-                                            role="progressbar" aria-valuenow="36"
-                                            aria-valuemin="20" aria-valuemax="100"
-                                            style="width:36%"></div>
-                                    </div>
-                                </td>
-                                <td class="text-truncate">$ 1180.00</td>
-                            </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="3" class="text-center">Belum ada pengajuan proker.</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
 
+                <div class="mt-1 text-center">
+                    <a href="{{ route('admin.review.proker') }}" class="text-muted"><i class="mdi mdi-arrow-right-circle mr-1"></i> Lihat Semua Pengajuan</a>
+                </div>
+
             </div> <!-- end card-body-->
         </div> <!-- end card-->
-    </div> <!-- end col -->
+    </div>
 </div>
-
+@endrole
 @endsection
 
 @section('scripts') 
-
-    <script>
-        (function($) {
+<script>
+    (function($) {
         'use strict';
         $(function() {
-            if ($("#ormawa-pie").length) {
-            var pieChartCanvas = $("#ormawa-pie").get(0).getContext("2d");
-            var pieChart = new Chart(pieChartCanvas, {
-                type: 'pie',
-                data: {
-                datasets: [{
-                    data: [21, 34, 48, 31],
-                    backgroundColor: [
-                    '#3F51B5', 
-                    '#f8ac5a', 
-                    '#00c2b2', 
-                    '#f15050'
-                    ],
-                    borderColor: [
-                    '#3F51B5', 
-                    '#f8ac5a', 
-                    '#00c2b2', 
-                    '#f15050'
-                    ],
-                }],
-            
-                // These labels appear in the legend and in the tooltips when hovering different arcs
-                labels: [
-                    'Samsung',
-                    'Apple',
-                    'Vivo',
-                    'Motorola'
-                ]
-                },
-                options: {
-                responsive: true,
-                animation: {
-                    animateScale: true,
-                    animateRotate: true
-                }
-                }
-            });
-            }
-            if ($('#ormawa-line').length) {
-                var lineChartCanvas = $("#ormawa-line").get(0).getContext("2d");
-                var data = {
-                    labels: ["2013", "2014", "2014", "2015", "2016", "2017", "2018", "2019"],
-                    datasets: [
-                    {
-                        label: 'Apple',
-                        data: [120, 180, 140, 210, 160, 240, 180, 210],
-                        borderColor: [
-                        '#1d84c6'
-                        ],
-                        borderWidth: 3,
-                        fill: false,
-                        pointBackgroundColor: "#ffffff",
-                        pointBorderColor: "#1d84c6"
+            // Pastikan data tidak kosong agar tidak error JS
+            var labels = @json($labelsSkim ?? []);
+            var dataValues = @json($dataSkim ?? []);
+
+            if ($("#ormawa-pie").length && labels.length > 0) {
+                var pieChartCanvas = $("#ormawa-pie").get(0).getContext("2d");
+                
+                var pieChart = new Chart(pieChartCanvas, {
+                    type: 'pie',
+                    data: {
+                        labels: labels, 
+                        datasets: [{
+                            data: dataValues,
+                            backgroundColor: [
+                                '#3F51B5', '#f8ac5a', '#00c2b2', '#f15050', 
+                                '#795548', '#607D8B', '#E91E63', '#9C27B0'
+                            ],
+                            borderColor: '#ffffff',
+                            borderWidth: 2
+                        }]
                     },
-                    {
-                        label: 'Samsung',
-                        data: [80, 140, 100, 170, 120, 200, 140, 170],
-                        borderColor: [
-                        '#00c2b2'
-                        ],
-                        borderWidth: 3,
-                        fill: false,
-                        pointBackgroundColor: "#ffffff",
-                        pointBorderColor: "#00c2b2"
-                    }
-                    ]
-                };
-                var options = {
-                    scales: {
-                    yAxes: [{
-                        gridLines: {
-                        drawBorder: false,
-                        borderDash: [3, 3]
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false, // INI KUNCINYA
+                        legend: {
+                            display: true,
+                            position: 'bottom',
+                            labels: {
+                                boxWidth: 12,
+                                padding: 20
+                            }
                         },
-                        ticks: {
-                        min: 0
-                        },
-                    }],
-                    xAxes: [{
-                        gridLines: {
-                        display: false,
-                        drawBorder: false,
-                        color: "#ffffff"
+                        // Animasi dimatikan sebentar untuk memastikan tidak loop
+                        animation: {
+                            animateScale: true,
+                            animateRotate: true
                         }
-                    }]
-                    },
-                    elements: {
-                    line: {
-                        tension: 0.2
-                    },
-                    point: {
-                        radius: 4
                     }
-                    },
-                    stepsize: 1
-                };
-                var lineChart = new Chart(lineChartCanvas, {
-                    type: 'line',
-                    data: data,
-                    options: options
                 });
+            } else {
+                console.log("Canvas tidak ditemukan atau data kosong");
             }
         });
-        })(jQuery);
-    </script>
+    })(jQuery);
+</script>
 @endsection

@@ -280,3 +280,142 @@ $(document).ready(function() {
                       .text(btnText);
         });
     });
+
+    document.getElementById('select-all-sdgs').addEventListener('change', function() {
+        // Ambil semua checkbox dengan class 'sdgs-item'
+        var checkboxes = document.querySelectorAll('.sdgs-item');
+        
+        // Loop dan ubah status checked sesuai dengan tombol 'Pilih Semua'
+        for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = this.checked;
+        }
+    });
+
+    // =========================================
+    // Multi-Step Form Logic
+    // =========================================
+
+    let currentStepM = 1;
+    const totalStepsM = 2; // Sesuaikan jumlah step Anda
+
+    function updateView() {
+        // Sembunyikan semua step
+        $('.form-step').addClass('d-none');
+        // Tampilkan step saat ini
+        $(`#step-${currentStepM}`).removeClass('d-none');
+
+        // Atur Tombol
+        if (currentStepM === 1) {
+            $('#btn-prev').addClass('d-none');
+            $('#btn-next').removeClass('d-none');
+            $('#btn-submit').addClass('d-none');
+        } else if (currentStepM === totalStepsM) {
+            $('#btn-prev').removeClass('d-none');
+            $('#btn-next').addClass('d-none');
+            $('#btn-submit').removeClass('d-none');
+        } else {
+            $('#btn-prev').removeClass('d-none');
+            $('#btn-next').removeClass('d-none');
+            $('#btn-submit').addClass('d-none');
+        }
+
+        // Update Progress Bar
+        let percentage = (currentStepM / totalStepsM) * 100;
+        $('#progressBar').css('width', percentage + '%');
+    }
+
+    // Inisialisasi tampilan awal
+    $(document).ready(function() {
+        $('#btn-next').click(function() {
+            // Validasi HTML5 sederhana sebelum lanjut
+            if ($('#formProkerWizard')[0].checkValidity()) {
+                if (currentStepM < totalStepsM) {
+                    currentStepM++;
+                    updateView();
+                }
+            } else {
+                $('#formProkerWizard')[0].reportValidity();
+            }
+        });
+
+        $('#btn-prev').click(function() {
+            if (currentStepM > 1) {
+                currentStepM--;
+                updateView();
+            }
+        });
+    });
+
+    $('#formProkerWizard').on('keyup keypress', function(e) {
+        var keyCode = e.keyCode || e.which;
+        if (keyCode === 13) { 
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // Inisialisasi Flatpickr untuk input waktu
+    flatpickr("#persiapan_waktu", {
+        enableTime: true,       // Mengaktifkan waktu
+        noCalendar: true,       // Menyembunyikan kalender (hanya waktu)
+        dateFormat: "H:i",      // Format Jam:Menit (24 jam)
+        time_24hr: true         // Opsi kunci untuk mematikan AM/PM
+    });
+
+    flatpickr("#pelaksanaan_waktu", {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+        time_24hr: true
+    });
+
+    flatpickr("#evaluasi_waktu", {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+        time_24hr: true
+    });
+
+    flatpickr("#pelaporan_waktu", {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+        time_24hr: true
+    });
+
+    // Modal Guide Logic
+    $(document).ready(function() {
+        // Event saat modal guide akan muncul
+        $('#guideModal').on('show.bs.modal', function (event) {
+            // Ambil tombol yang diklik (relatedTarget)
+            var button = $(event.relatedTarget); 
+            
+            // Ambil data dari atribut tombol
+            var title = button.data('title');
+            var content = button.data('content');
+            
+            // Update isi modal menggunakan jQuery
+            var modal = $(this);
+            modal.find('.modal-title').text(title);
+            modal.find('#guideModalContent').text(content);
+        });
+    });
+
+    $('#modalApprove').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Tombol yang diklik
+        var prokerId = button.data('proker'); // Ambil ID dari data-proker
+        var namaProker = button.data('nama'); // Ambil Nama dari data-nama
+
+        var modal = $(this);
+        
+        // Update teks nama proker di dalam modal
+        modal.find('#namaProkerModal').text(namaProker);
+        
+        // Update Action Form secara dinamis
+        // Sesuaikan URL-nya dengan struktur route Anda
+        var actionUrl = "{{ route('admin.review.rab.approve', ':id') }}";
+        actionUrl = actionUrl.replace(':id', prokerId);
+        modal.find('#formApprove').attr('action', actionUrl);
+    });
+
+    

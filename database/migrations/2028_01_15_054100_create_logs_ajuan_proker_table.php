@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('logs_ajuan_proker', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('proker_id');
-            $table->enum('action', ['created', 'updated', 'deleted', 'approved', 'rejected']);
-            $table->text('notes')->nullable();
+            $table->string('action');
+            $table->text('description')->nullable();
+            $table->enum('status', ['Diajukan', 'Disetujui', 'Review', 'Proses Pembina', 'Revisi', 'Ditolak', 'Ajuan RAB'])->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
 

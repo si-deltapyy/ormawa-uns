@@ -15,14 +15,19 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('proker_id');
             $table->unsignedBigInteger('mak_id');
+            $table->string('uraian_belanja');
             $table->integer('volume');
             $table->integer('frekuensi');
-            $table->integer('jumlah_kegiatan');
+            $table->integer('perhitungan');
             $table->integer('tahun_anggaran');
-            $table->decimal('harga_satuan', 15, 2);
-            $table->decimal('total_biaya', 15, 2);
+            $table->string('harga_satuan');
+            $table->string('total_biaya');
             $table->text('catatan')->nullable();
+            $table->boolean('is_approved')->default(false);
             $table->timestamps();
+
+            $table->foreign('proker_id')->references('id')->on('proker')->onDelete('cascade');
+            $table->foreign('mak_id')->references('id')->on('mak')->onDelete('cascade');
         });
     }
 
