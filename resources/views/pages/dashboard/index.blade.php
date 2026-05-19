@@ -1,5 +1,9 @@
 @extends('layouts.dashboard')
 
+@section('title')
+Organisasi Mahasiswa Universitas Sebelas Maret
+@endsection
+
 @section('content')
 
 @role('admin')
@@ -152,7 +156,6 @@
     </div> <!-- end col -->
 </div>
 <!-- end row-->
-
 
 <div class="row">
     <div class="col-xl-12">

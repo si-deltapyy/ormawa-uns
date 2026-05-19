@@ -40,8 +40,8 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-5 mb-lg-0">
-                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill mb-3">Official Platform</span>
-                    <h1 class="hero-title mb-4">Pusat Data <br><span>Ormawa UNS</span></h1>
+                    <h1 class="hero-title mb-4">Pusat Data <br><span>Ormawa UNS </span></h1>
+                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill mb-3"> Beta Version 2.1.2026</span>
                     <p class="lead text-secondary mb-5 pe-lg-5">
                         Platform digital terintegrasi untuk pengelolaan data, administrasi, dan pelaporan kegiatan Organisasi Mahasiswa di Universitas Sebelas Maret.
                     </p>
@@ -52,18 +52,18 @@
                     
                     <div class="mt-5 d-flex align-items-center gap-4">
                         <div>
-                            <h4 class="fw-bold mb-0">150+</h4>
+                            <h4 class="fw-bold mb-0">{{ $ormawacount }}+</h4>
                             <small class="text-muted">Ormawa Aktif</small>
                         </div>
                         <div class="vr"></div>
                         <div>
-                            <h4 class="fw-bold mb-0">2.5k</h4>
+                            <h4 class="fw-bold mb-0">{{ $prokercount }}+</h4>
                             <small class="text-muted">Kegiatan/Tahun</small>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 text-center">
-                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" 
+                    <img src="{{asset('img/rektorat-gedung.webp')}}" 
                          alt="Mahasiswa UNS" class="img-fluid hero-img w-100">
                 </div>
             </div>
@@ -123,7 +123,7 @@
         </div>
     </section>
 
-    <section class="py-5 bg-light">
+    {{-- <section class="py-5 bg-light">
         <div class="container">
             <div class="d-flex justify-content-between align-items-end mb-4">
                 <div>
@@ -144,6 +144,6 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 @endsection 
 

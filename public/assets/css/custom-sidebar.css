@@ -1,0 +1,28 @@
+
+    #sidebar-menu ul li.mm-active > a,
+    #sidebar-menu ul li.mm-active > a i, 
+    #sidebar-menu ul li a.active,
+    #sidebar-menu ul li a.active i {
+        color: #4090cb !important; /* Ganti kode hex ini dengan warna biru pilihan Anda */
+        font-weight: 600; /* Opsional: Menebalkan font saat aktif */
+        background-color: #fafafa; /* Opsional: Memberi warna latar abu-abu muda agar lebih jelas */
+    }
+
+    /* Mengubah warna teks saat cursor diarahkan (Hover) */
+    #sidebar-menu ul li a:hover,
+    #sidebar-menu ul li a:hover i {
+        color: #4090cb !important;
+    }
+    
+    /* Perbaikan khusus untuk Sub-menu agar tetap terlihat */
+    #sidebar-menu ul ul.sub-menu li.mm-active > a {
+        color: #4090cb !important;
+    }
+
+    .sidebar-link.disabled {
+        text-decoration: line-through; /* Garis coret */
+        color: #6c757d;              /* Warna abu-abu (muted) */
+        pointer-events: none;          /* Agar tidak bisa diklik */
+        cursor: not-allowed;           /* Icon mouse jadi tanda larangan */
+        opacity: 0.6;                  /* Sedikit transparan */
+    }

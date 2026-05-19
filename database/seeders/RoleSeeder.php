@@ -16,43 +16,63 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        Role::create([
-            'name' => 'super-admin',
-            'guard_name' => 'web'
-        ]);
+        // Role::create([
+        //     'name' => 'super-admin',
+        //     'guard_name' => 'web'
+        // ]);
         
-        Role::create([
-            'name' => 'admin',
-            'guard_name' => 'web'
-        ]);
+        // Role::create([
+        //     'name' => 'admin',
+        //     'guard_name' => 'web'
+        // ]);
 
-        Role::create([
-            'name' => 'user',
-            'guard_name' => 'web'
-        ]);
+        // Role::create([
+        //     'name' => 'user',
+        //     'guard_name' => 'web'
+        // ]);
 
-        Role::create([
-            'name' => 'stakeholder',
-            'guard_name' => 'web'
-        ]);
+        // Role::create([
+        //     'name' => 'stakeholder',
+        //     'guard_name' => 'web'
+        // ]);
 
-        Role::create([
-            'name' => 'ormawa',
-            'guard_name' => 'web'
-        ]);
+        // Role::create([
+        //     'name' => 'ormawa',
+        //     'guard_name' => 'web'
+        // ]);
 
-        Role::create([
-            'name' => 'pembina',
+        // Role::create([
+        //     'name' => 'pembina',
+        //     'guard_name' => 'web'
+        // ]);
+
+        // Permission::create([
+        //     'name' => 'ketua-ormawa',
+        //     'guard_name' => 'web'
+        // ]);
+
+        // Permission::create([
+        //     'name' => 'anggota-ormawa',
+        //     'guard_name' => 'web'
+        // ]);
+
+        // Permission::create([
+        //     'name' => 'pembina-ormawa',
+        //     'guard_name' => 'web'
+        // ]);
+
+        Permission::create([
+            'name' => 'supervisor-ormawa',
             'guard_name' => 'web'
         ]);
 
         Permission::create([
-            'name' => 'ketua-ormawa',
+            'name' => 'manage-tor',
             'guard_name' => 'web'
         ]);
 
         Permission::create([
-            'name' => 'anggota-ormawa',
+            'name' => 'manage-rab',
             'guard_name' => 'web'
         ]);
 

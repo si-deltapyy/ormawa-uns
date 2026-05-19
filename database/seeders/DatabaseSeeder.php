@@ -13,8 +13,17 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            RoleSeeder::class,
+            // MAKSeeder::class,
+            // OrmawaSeeder::class,
+            // RoleSeeder::class,
             UserSeeder::class,
+            // SubKegiatanSeeder::class,
+            // TimelineSeeder::class,
+            // JenisKegiatan::class,
+            // LuaranSeeder::class,
+            // CreateSkimsSeeder::class,
+            // SdgSeeder::class,
+            // IndikatorKinerjaSeeder::class,
         ]);
     }
 }

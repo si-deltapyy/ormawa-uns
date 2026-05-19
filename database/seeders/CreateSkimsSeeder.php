@@ -14,24 +14,16 @@ class CreateSkimsSeeder extends Seeder
     public function run()
     {
         Skim::create([
-            'kode_skim' => 'PR',
-            'nama_skim' => 'Delegasi Lomba (Eksternal / Internal)',
+            'nama_skim' => 'Pendelegasian Kompetisi',
         ]);
         Skim::create([
-            'kode_skim' => 'RG',
-            'nama_skim' => 'Kegiatan Rekognisi Non Lomba',
+            'nama_skim' => 'Pendelegasian Non Kompetisi',
         ]);
         Skim::create([
-            'kode_skim' => 'MB',
-            'nama_skim' => 'Kegiatan MBKM',
+            'nama_skim' => 'Penyelenggaraan Kompetisi',
         ]);
         Skim::create([
-            'kode_skim' => 'BN',
-            'nama_skim' => 'Kegiatan Bela Negara',
-        ]);
-        Skim::create([
-            'kode_skim' => 'LL',
-            'nama_skim' => 'Lainnya',
+            'nama_skim' => 'Penyelenggaraan Non Kompetisi',
         ]);
     }
 }

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anggota;
 use App\Models\Skim;
 use App\Models\User;
 use App\Models\Asset;
 use App\Models\Ormawa;
 use App\Models\Proker;
 use App\Models\Mahasiswa;
+use App\Models\RABModel;
 use App\Models\TargetProker;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +17,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
-
+use PhpOffice\PhpWord\TemplateProcessor;
+use PhpOffice\PhpWord\Settings;
 
 class UserController extends Controller
 {
@@ -28,9 +31,83 @@ class UserController extends Controller
     //     return view('user.index', compact('name'));
     // }
 
+    public function pdfView($id)
+    {
+        // Mengambil data sesuai query Anda sebelumnya
+        $proker = Proker::join('ormawa', 'ormawa.id', '=', 'proker.id_ormawa')
+            ->join('skim_kegiatan', 'skim_kegiatan.id', '=', 'proker.id_skim')
+            ->where('proker.id', '=', $id)
+            ->select('proker.*', 'skim_kegiatan.nama_skim', 'ormawa.nama_ormawa')
+            ->first(); 
+
+        if (!$proker) {
+            return redirect()->back()->with('error', 'Data tidak ditemukan');
+        }
+
+        // Load view menggunakan FacadePdf (DomPDF)
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('pages.view.tor', compact('proker'));
+
+        // Sesuai permintaan di file Word: Ukuran Legal
+        $pdf->setPaper('legal', 'portrait');
+
+        // Menampilkan langsung di browser tanpa download otomatis
+        return $pdf->stream('TOR_Prestasi_' . $proker->id . '.pdf', [
+            'Content-Disposition' => 'inline; filename="TOR.pdf"'
+        ]);
+    }
+
+    public function generateWord()
+    {
+        // 1. Tentukan path template
+        $templatePath = storage_path('app/template/DraftTor-Prestasi.docx');
+        
+        // Pastikan folder tujuan ada, jika tidak, buat foldernya
+        if (!File::exists(storage_path('app/tor'))) {
+            File::makeDirectory(storage_path('app/tor'), 0755, true);
+        }
+
+        $templateProcessor = new TemplateProcessor($templatePath);
+
+        // 2. Mapping data ke template
+        $templateProcessor->setValue('apa', 'John Doe');
+        $templateProcessor->setValue('ujicoba', 'Jane Smith');
+
+        // 3. Simpan file Word sementara
+        $fileName = 'Surat_asd.docx';
+        $tempPath = storage_path('app/tor/' . $fileName);
+        $templateProcessor->saveAs($tempPath);
+
+        $rendererName = Settings::PDF_RENDERER_DOMPDF;
+        $rendererLibraryPath = base_path('vendor/dompdf/dompdf');
+        Settings::setPdfRenderer($rendererName, $rendererLibraryPath);
+
+        // --- PROSES LOADING & WRITING ---
+        $phpWord = \PhpOffice\PhpWord\IOFactory::load($tempPath);
+        $pdfWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'PDF');
+
+        // --- MODIFIKASI AGAR LANGSUNG VIEW (INLINE) ---
+        return response()->stream(function() use ($pdfWriter) {
+            $pdfWriter->save('php://output');
+        }, 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="dokumen.pdf"',
+            'Cache-Control' => 'no-cache, no-store, must-revalidate',
+            'Pragma' => 'no-cache',
+            'Expires' => '0',
+        ]);
+    }
+
     public function index()
     {
-        return view('pages.dashboard.index');
+        $proker = Proker::where('id_ormawa', '=', Auth::user()->anggota->ormawa_id)->get();
+        $dataAnggota = Anggota::join('users', 'users.id', '=', 'anggota.user_id')
+            ->join('ormawa', 'ormawa.id', '=', 'anggota.ormawa_id')
+            ->where('user_id', '=', Auth::user()->id)
+            ->get(['anggota.*', 'users.name', 'ormawa.nama_ormawa']);
+        $prokercount = Proker::where('id_ormawa', '=', $dataAnggota->first()->ormawa_id)->count();
+        $anggaran = RABModel::where('proker_id', '=', 0)->sum('total_biaya');
+        $realisasiProker = Proker::where('status_pelaksanaan', '=', 'Sedang Dilaksanakan')->count();
+        return view('pages.dashboard.user', compact('proker', 'dataAnggota', 'prokercount', 'anggaran', 'realisasiProker'));
     }
 
     public function profile()

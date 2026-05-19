@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="{{asset('img/logo-uns.png')}}" />
 
     <style>
         :root {
@@ -183,7 +184,7 @@
             </div>
             <hr class="my-4">
             <div class="text-center text-muted small pb-3">
-                &copy; {{ date('Y') }} Universitas Sebelas Maret. All rights reserved.
+                &copy; {{ date('Y') }} Direktorat Kemahasiswaan Universitas Sebelas Maret. All rights reserved.
             </div>
         </div>
     </footer>
