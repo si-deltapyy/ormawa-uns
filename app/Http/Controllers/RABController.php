@@ -16,9 +16,15 @@ class RABController extends Controller
 
     public function index($id)
     {
-        $rab = RABModel::with('proker', 'mak')->get();
-        $proker = Proker::find($id);
+        $rab = RABModel::with('proker')->get();
+        $proker = Proker::with('rab')->find($id);
         return view('pages.pengajuan.rab.index', compact('rab', 'proker'));
+    }
+
+    public function show($id)
+    {
+        $rab = RABModel::where('proker_id', $id)->with('proker')->get();
+        return view('pages.pengajuan.rab.index', compact('rab', 'id'));
     }
 
     public function createRAB($id)
@@ -99,6 +105,7 @@ class RABController extends Controller
         $proker = Proker::find($id);
         $proker->status_rab = 'Menunggu';
         $proker->status_proker = 'Review';
+        $proker->is_review_rab = false;
         $proker->save();
 
         $logs = new LogsAjuan();

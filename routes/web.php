@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnggaranController;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -7,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Models\User;
+use Illuminate\Support\Facades\Artisan;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use Spatie\Permission\Models\Role;
 
@@ -58,3 +60,13 @@ Route::get('symlink', function () {
 
 Route::get('docs/{id}', [UserController::class, 'pdfView'])
     ->name('user.pdfView');
+
+Route::get('/maintenance/end', function () {
+    Artisan::call('up');
+});
+
+Route::get('/maintenance/start', function () {
+    Artisan::call('down');
+});
+
+Route::get('/anggaran/{id}', [AnggaranController::class, 'index'])->name('anggaran.index');

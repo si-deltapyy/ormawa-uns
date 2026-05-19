@@ -28,7 +28,7 @@ class AjuanController extends Controller
     {
         $now = now('Asia/Jakarta');
         $open = \Carbon\Carbon::create(2026, 2, 8, 10, 0, 0);
-        $close = \Carbon\Carbon::create(2026, 2, 9, 23, 59, 59);
+        $close = \Carbon\Carbon::create(2026, 3, 12, 23, 59, 59);
 
         if ($now->lt($open)) {
             toast()->error('Akses belum dibuka.', 'Sesi revisi proker belum Dibuka.');

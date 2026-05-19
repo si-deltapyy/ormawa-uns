@@ -40,6 +40,7 @@ use Illuminate\Validation\Rules\In;
     Route::delete('user/ajuan/rab/delete/{id}', [RABController::class, 'deleteRAB'])->name('user.ajuan.rab.delete');
     Route::get('/user/ajuan/rab/edit/{id}', [RABController::class, 'edit'])->name('user.ajuan.rab.edit');
     Route::put('/user/ajuan/rab/update/{id}', [RABController::class, 'update'])->name('user.ajuan.rab.update');
+    Route::get('/user/rab/show/{id}', [RABController::class, 'show'])->name('user.ajuan.rab.show');
     
 
     Route::get('cek-mahasiswa/{nim}', [MahasiswaController::class, 'cekNim'])->name('api.cek.nim');

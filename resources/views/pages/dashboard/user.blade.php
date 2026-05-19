@@ -204,6 +204,13 @@
                                             <i class="mdi mdi-file-outline me-1"></i>
                                             Revisi Proker
                                         </a>
+                                    @elseif($data->status_proker == 'Disetujui')
+                                        <a href="{{ route('user.ajuan.proker.edit', $data->id) }}" class="badge badge-soft-danger mb-1 p-2 font-size-12"
+                                            onclick="return confirm('Yakin ingin Lihat Proker?')"
+                                        >
+                                            <i class="mdi mdi-file-outline me-1"></i>
+                                            Lihat Proker
+                                        </a>
                                     @else
                                      **
                                     @endif
@@ -213,6 +220,13 @@
                                         >
                                             <i class="mdi mdi-cash-multiple me-1"></i>
                                             Revisi RAB
+                                        </a>
+                                    @elseif($data->status_rab == 'Disetujui')
+                                        <a href="{{ route('user.ajuan.rab.index', $data->id) }}" class="badge badge-soft-danger mb-1 p-2 font-size-12"
+                                            onclick="return confirm('Yakin ingin Lihat RAB?')"
+                                        >
+                                            <i class="mdi mdi-cash-multiple me-1"></i>
+                                            Lihat RAB
                                         </a>
                                     @else
                                      **
