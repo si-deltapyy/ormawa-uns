@@ -69,4 +69,22 @@ Route::get('/maintenance/start', function () {
     Artisan::call('down');
 });
 
+Route::get('/seed/{seed}', function ($seed = null) {
+    if ($seed) {
+        Artisan::call("db:seed --class={$seed}");
+    } else {
+        Artisan::call('db:seed');
+    }
+    return 'Database migrated fresh and seeded.';
+});
+
+Route::get('/optimize', function () {
+    Artisan::call('optimize:clear');
+    Artisan::call('optimize');
+    Artisan::call('route:cache');
+    Artisan::call('config:cache');
+    Artisan::call('cache:clear');
+    return 'Application optimized.';
+});
+
 Route::get('/anggaran/{id}', [AnggaranController::class, 'index'])->name('anggaran.index');
