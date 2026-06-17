@@ -17,13 +17,15 @@ class DatabaseSeeder extends Seeder
             MAKSeeder::class,
             OrmawaSeeder::class,
             UserSeeder::class,
-            SubKegiatanSeeder::class,
-            TimelineSeeder::class,
-            JenisKegiatan::class,
-            LuaranSeeder::class,
-            CreateSkimsSeeder::class,
-            SdgSeeder::class,
-            IndikatorKinerjaSeeder::class,
+        //     MAKSeeder::class,
+        //     OrmawaSeeder::class,
+        //     SubKegiatanSeeder::class,
+        //     TimelineSeeder::class,
+        //     JenisKegiatan::class,
+        //     LuaranSeeder::class,
+        //     CreateSkimsSeeder::class,
+        //     SdgSeeder::class,
+        //     IndikatorKinerjaSeeder::class,
         ]);
     }
 }

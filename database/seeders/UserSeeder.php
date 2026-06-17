@@ -16,13 +16,13 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        // $admin = User::create([
-        //     'name' => 'Admin Pusat',
-        //     'email' => 'admin@role',
-        //     'password' => bcrypt('123')
-        // ]);
+        $admin = User::create([
+            'name' => 'Admin Pusat',
+            'email' => 'admin@role',
+            'password' => bcrypt('123')
+        ]);
 
-        // $admin->assignRole('admin');
+        $admin->assignRole('admin');
 
         // $superadmin = User::create([
         //     'name' => 'Super Admin',
@@ -32,79 +32,79 @@ class UserSeeder extends Seeder
 
         // $superadmin->assignRole('super-admin');
 
-        $adminRab = User::create([
-            'name' => 'Admin RAB',
-            'email' => 'admin@rab',
-            'password' => bcrypt('rab123')
-        ]);
+        // $adminRab = User::create([
+        //     'name' => 'Admin RAB',
+        //     'email' => 'admin@rab',
+        //     'password' => bcrypt('rab123')
+        // ]);
 
-        $adminTor = User::create([
-            'name' => 'Admin TOR',
-            'email' => 'admin@tor',
-            'password' => bcrypt('tor123')
-        ]);
+        // $adminTor = User::create([
+        //     'name' => 'Admin TOR',
+        //     'email' => 'admin@tor',
+        //     'password' => bcrypt('tor123')
+        // ]);
 
-        $adminRab->assignRole('admin');
-        $adminTor->assignRole('admin');
-        $adminRab->givePermissionTo('manage-rab');
-        $adminTor->givePermissionTo('manage-tor');
+        // $adminRab->assignRole('admin');
+        // $adminTor->assignRole('admin');
+        // $adminRab->givePermissionTo('manage-rab');
+        // $adminTor->givePermissionTo('manage-tor');
 
-        // $user = [
-        //     ['id' => 1,'name' => 'Ormawa Kerohanian Islam JN UKMI','email' => 'U01@ormawa.com','password' => bcrypt('u01ormawa'),'role' => 'user'],
-        //     ['id' => 2,'name' => 'Ormawa Kerohanian Islam Ilmu QurAn','email' => 'U02@ormawa.com','password' => bcrypt('u02ormawa'),'role' => 'user'],
-        //     ['id' => 3,'name' => 'Ormawa Kerohanian Islam Seni Religi','email' => 'U03@ormawa.com','password' => bcrypt('u03ormawa'),'role' => 'user'],
-        //     ['id' => 4,'name' => 'Ormawa Kerohanian Kristen','email' => 'U04@ormawa.com','password' => bcrypt('u04ormawa'),'role' => 'user'],
-        //     ['id' => 5,'name' => 'Ormawa Kerohanian Katholik','email' => 'U05@ormawa.com','password' => bcrypt('u05ormawa'),'role' => 'user'],
-        //     ['id' => 6,'name' => 'Ormawa Kerohanian Hindu','email' => 'U06@ormawa.com','password' => bcrypt('u06ormawa'),'role' => 'user'],
-        //     ['id' => 7,'name' => 'Ormawa Kerohanian Budha','email' => 'U07@ormawa.com','password' => bcrypt('u07ormawa'),'role' => 'user'],
-        //     ['id' => 8,'name' => 'Ormawa Kerohanian Konghucu','email' => 'U08@ormawa.com','password' => bcrypt('u08ormawa'),'role' => 'user'],
-        //     ['id' => 9,'name' => 'Ormawa Badan Eksekutif Mahasiswa','email' => 'U09@ormawa.com','password' => bcrypt('u09ormawa'),'role' => 'user'],
-        //     ['id' => 10,'name' => 'Ormawa Dewan Mahasiswa','email' => 'U10@ormawa.com','password' => bcrypt('u10ormawa'),'role' => 'user'],
-        //     ['id' => 11,'name' => 'Ormawa Paduan Suara Mahasiswa Voca Erudita','email' => 'U11@ormawa.com','password' => bcrypt('u11ormawa'),'role' => 'user'],
-        //     ['id' => 12,'name' => 'Ormawa Marching Band','email' => 'U12@ormawa.com','password' => bcrypt('u12ormawa'),'role' => 'user'],
-        //     ['id' => 13,'name' => 'Ormawa Kesenian Tradisional','email' => 'U13@ormawa.com','password' => bcrypt('u13ormawa'),'role' => 'user'],
-        //     ['id' => 14,'name' => 'Ormawa Pencinta Alam Garba Wira Bhuana','email' => 'U14@ormawa.com','password' => bcrypt('u14ormawa'),'role' => 'user'],
-        //     ['id' => 15,'name' => 'Ormawa Korps Sukarela Palang Merah Indonesia','email' => 'U16@ormawa.com','password' => bcrypt('u16ormawa'),'role' => 'user'],
-        //     ['id' => 16,'name' => 'Ormawa Gerakan Pramuka Gudep Kota Surakarta ','email' => 'U17@ormawa.com','password' => bcrypt('u17ormawa'),'role' => 'user'],
-        //     ['id' => 17,'name' => 'Ormawa Pusat Informasi dan Komunikasi Remaja','email' => 'U18@ormawa.com','password' => bcrypt('u18ormawa'),'role' => 'user'],
-        //     ['id' => 18,'name' => 'Ormawa Studi Ilmiah Mahasiswa','email' => 'U19@ormawa.com','password' => bcrypt('u19ormawa'),'role' => 'user'],
-        //     ['id' => 19,'name' => 'Ormawa Student English Forum','email' => 'U20@ormawa.com','password' => bcrypt('u20ormawa'),'role' => 'user'],
-        //     ['id' => 20,'name' => 'Ormawa Aisec','email' => 'U21@ormawa.com','password' => bcrypt('u21ormawa'),'role' => 'user'],
-        //     ['id' => 21,'name' => 'Ormawa Lembaga Pers Mahasiswa Kentingan','email' => 'U22@ormawa.com','password' => bcrypt('u22ormawa'),'role' => 'user'],
-        //     ['id' => 22,'name' => 'Ormawa Robotika','email' => 'U23@ormawa.com','password' => bcrypt('u23ormawa'),'role' => 'user'],
-        //     ['id' => 23,'name' => 'Ormawa Koperasi Mahasiswa','email' => 'U24@ormawa.com','password' => bcrypt('u24ormawa'),'role' => 'user'],
-        //     ['id' => 24,'name' => 'Ormawa INKAI','email' => 'U25@ormawa.com','password' => bcrypt('u25ormawa'),'role' => 'user'],
-        //     ['id' => 25,'name' => 'Ormawa Sorinji Kempo','email' => 'U26@ormawa.com','password' => bcrypt('u26ormawa'),'role' => 'user'],
-        //     ['id' => 26,'name' => 'Ormawa Taekwondo','email' => 'U27@ormawa.com','password' => bcrypt('u27ormawa'),'role' => 'user'],
-        //     ['id' => 27,'name' => 'Ormawa Pencak Silat Merpati Putih','email' => 'U28@ormawa.com','password' => bcrypt('u28ormawa'),'role' => 'user'],
-        //     ['id' => 28,'name' => 'Ormawa Pencak Silat Tapak Suci','email' => 'U29@ormawa.com','password' => bcrypt('u29ormawa'),'role' => 'user'],
-        //     ['id' => 29,'name' => 'Ormawa Pencak Silat Perisai Diri','email' => 'U30@ormawa.com','password' => bcrypt('u30ormawa'),'role' => 'user'],
-        //     ['id' => 30,'name' => 'Ormawa Pencak Silat PSHT','email' => 'U31@ormawa.com','password' => bcrypt('u31ormawa'),'role' => 'user'],
-        //     ['id' => 31,'name' => 'Ormawa Sepakbola dan Futsal','email' => 'U32@ormawa.com','password' => bcrypt('u32ormawa'),'role' => 'user'],
-        //     ['id' => 32,'name' => 'Ormawa Bola Basket','email' => 'U33@ormawa.com','password' => bcrypt('u33ormawa'),'role' => 'user'],
-        //     ['id' => 33,'name' => 'Ormawa Bola Voli','email' => 'U34@ormawa.com','password' => bcrypt('u34ormawa'),'role' => 'user'],
-        //     ['id' => 34,'name' => 'Ormawa Bulutangkis','email' => 'U35@ormawa.com','password' => bcrypt('u35ormawa'),'role' => 'user'],
-        //     ['id' => 35,'name' => 'Ormawa Tenis Lapangan','email' => 'U36@ormawa.com','password' => bcrypt('u36ormawa'),'role' => 'user'],
-        //     ['id' => 36,'name' => 'Ormawa Tenis Meja','email' => 'U37@ormawa.com','password' => bcrypt('u37ormawa'),'role' => 'user'],
-        //     ['id' => 37,'name' => 'Ormawa Komadiksi Smart','email' => 'U38@ormawa.com','password' => bcrypt('u38ormawa'),'role' => 'user'],
-        //     ['id' => 38,'name' => 'Ormawa Pentaque','email' => 'U39@ormawa.com','password' => bcrypt('u39ormawa'),'role' => 'user'],
-        //     ['id' => 39,'name' => 'Ormawa HMP Pascasarjana','email' => 'U40@ormawa.com','password' => bcrypt('u40ormawa'),'role' => 'user'],
-        //     ['id' => 40,'name' => 'Ormawa Society of Renewable Energy','email' => 'U41@ormawa.com','password' => bcrypt('u41ormawa'),'role' => 'user'],
-        //     ['id' => 41,'name' => 'Ormawa Judo','email' => 'U42@ormawa.com','password' => bcrypt('u42ormawa'),'role' => 'user'],
-        //     ['id' => 42,'name' => 'Ormawa Pagar Nusa','email' => 'U43@ormawa.com','password' => bcrypt('u43ormawa'),'role' => 'user'],
-        //     ['id' => 43,'name' => 'Ormawa E-Sport','email' => 'U44@ormawa.com','password' => bcrypt('u44ormawa'),'role' => 'user'],
-        //     ['id' => 44,'name' => 'Ormawa Aquatic','email' => 'U45@ormawa.com','password' => bcrypt('u45ormawa'),'role' => 'user'],
-        //     ['id' => 45,'name' => 'Ormawa Sepak Takraw','email' => 'U46@ormawa.com','password' => bcrypt('u46ormawa'),'role' => 'user'],
-        //     ['id' => 46,'name' => 'Ormawa Bengawan Team','email' => 'U47@ormawa.com','password' => bcrypt('u47ormawa'),'role' => 'user'],
-        //     ['id' => 47,'name' => 'Ormawa Catur','email' => 'U48@ormawa.com','password' => bcrypt('u48ormawa'),'role' => 'user'],
-        //     ['id' => 48,'name' => 'Non-Ormawa','email' => 'U99@ormawa.com','password' => bcrypt('u99ormawa'),'role' => 'user'],
-        //     ['id' => 49,'name' => 'Ormawa Futsal','email' => 'U49@ormawa.com','password' => bcrypt('u49ormawa'),'role' => 'user'],
-        //     ['id' => 50,'name' => 'Ormawa Atletik','email' => 'U50@ormawa.com','password' => bcrypt('u50ormawa'),'role' => 'user'],
-        //     ['id' => 51,'name' => 'Ormawa Kesusastraan','email' => 'U51@ormawa.com','password' => bcrypt('u51ormawa'),'role' => 'user'],
-        //     ['id' => 52,'name' => 'Ormawa UNS Consulting Club','email' => 'U52@ormawa.com','password' => bcrypt('u52ormawa'),'role' => 'user'],
-        //     ['id' => 53,'name' => 'Ormawa Ideas Lab UNS','email' => 'U53@ormawa.com','password' => bcrypt('u53ormawa'),'role' => 'user'],
-        //     ['id' => 54,'name' => 'Ormawa Forum Relawan Untuk Mahasiswa Disabilitas','email' => 'U54@ormawa.com','password' => bcrypt('u54ormawa'),'role' => 'user'],
-        // ];
+        $user = [
+            ['id' => 1,'name' => 'Ormawa Kerohanian Islam JN UKMI','email' => 'U01@ormawa.com','password' => bcrypt('u01ormawa'),'role' => 'user'],
+            ['id' => 2,'name' => 'Ormawa Kerohanian Islam Ilmu QurAn','email' => 'U02@ormawa.com','password' => bcrypt('u02ormawa'),'role' => 'user'],
+            ['id' => 3,'name' => 'Ormawa Kerohanian Islam Seni Religi','email' => 'U03@ormawa.com','password' => bcrypt('u03ormawa'),'role' => 'user'],
+            ['id' => 4,'name' => 'Ormawa Kerohanian Kristen','email' => 'U04@ormawa.com','password' => bcrypt('u04ormawa'),'role' => 'user'],
+            ['id' => 5,'name' => 'Ormawa Kerohanian Katholik','email' => 'U05@ormawa.com','password' => bcrypt('u05ormawa'),'role' => 'user'],
+            ['id' => 6,'name' => 'Ormawa Kerohanian Hindu','email' => 'U06@ormawa.com','password' => bcrypt('u06ormawa'),'role' => 'user'],
+            ['id' => 7,'name' => 'Ormawa Kerohanian Budha','email' => 'U07@ormawa.com','password' => bcrypt('u07ormawa'),'role' => 'user'],
+            ['id' => 8,'name' => 'Ormawa Kerohanian Konghucu','email' => 'U08@ormawa.com','password' => bcrypt('u08ormawa'),'role' => 'user'],
+            ['id' => 9,'name' => 'Ormawa Badan Eksekutif Mahasiswa','email' => 'U09@ormawa.com','password' => bcrypt('u09ormawa'),'role' => 'user'],
+            ['id' => 10,'name' => 'Ormawa Dewan Mahasiswa','email' => 'U10@ormawa.com','password' => bcrypt('u10ormawa'),'role' => 'user'],
+            ['id' => 11,'name' => 'Ormawa Paduan Suara Mahasiswa Voca Erudita','email' => 'U11@ormawa.com','password' => bcrypt('u11ormawa'),'role' => 'user'],
+            ['id' => 12,'name' => 'Ormawa Marching Band','email' => 'U12@ormawa.com','password' => bcrypt('u12ormawa'),'role' => 'user'],
+            ['id' => 13,'name' => 'Ormawa Kesenian Tradisional','email' => 'U13@ormawa.com','password' => bcrypt('u13ormawa'),'role' => 'user'],
+            ['id' => 14,'name' => 'Ormawa Pencinta Alam Garba Wira Bhuana','email' => 'U14@ormawa.com','password' => bcrypt('u14ormawa'),'role' => 'user'],
+            ['id' => 15,'name' => 'Ormawa Korps Sukarela Palang Merah Indonesia','email' => 'U16@ormawa.com','password' => bcrypt('u16ormawa'),'role' => 'user'],
+            ['id' => 16,'name' => 'Ormawa Gerakan Pramuka Gudep Kota Surakarta ','email' => 'U17@ormawa.com','password' => bcrypt('u17ormawa'),'role' => 'user'],
+            ['id' => 17,'name' => 'Ormawa Pusat Informasi dan Komunikasi Remaja','email' => 'U18@ormawa.com','password' => bcrypt('u18ormawa'),'role' => 'user'],
+            ['id' => 18,'name' => 'Ormawa Studi Ilmiah Mahasiswa','email' => 'U19@ormawa.com','password' => bcrypt('u19ormawa'),'role' => 'user'],
+            ['id' => 19,'name' => 'Ormawa Student English Forum','email' => 'U20@ormawa.com','password' => bcrypt('u20ormawa'),'role' => 'user'],
+            ['id' => 20,'name' => 'Ormawa Aisec','email' => 'U21@ormawa.com','password' => bcrypt('u21ormawa'),'role' => 'user'],
+            ['id' => 21,'name' => 'Ormawa Lembaga Pers Mahasiswa Kentingan','email' => 'U22@ormawa.com','password' => bcrypt('u22ormawa'),'role' => 'user'],
+            ['id' => 22,'name' => 'Ormawa Robotika','email' => 'U23@ormawa.com','password' => bcrypt('u23ormawa'),'role' => 'user'],
+            ['id' => 23,'name' => 'Ormawa Koperasi Mahasiswa','email' => 'U24@ormawa.com','password' => bcrypt('u24ormawa'),'role' => 'user'],
+            ['id' => 24,'name' => 'Ormawa INKAI','email' => 'U25@ormawa.com','password' => bcrypt('u25ormawa'),'role' => 'user'],
+            ['id' => 25,'name' => 'Ormawa Sorinji Kempo','email' => 'U26@ormawa.com','password' => bcrypt('u26ormawa'),'role' => 'user'],
+            ['id' => 26,'name' => 'Ormawa Taekwondo','email' => 'U27@ormawa.com','password' => bcrypt('u27ormawa'),'role' => 'user'],
+            ['id' => 27,'name' => 'Ormawa Pencak Silat Merpati Putih','email' => 'U28@ormawa.com','password' => bcrypt('u28ormawa'),'role' => 'user'],
+            ['id' => 28,'name' => 'Ormawa Pencak Silat Tapak Suci','email' => 'U29@ormawa.com','password' => bcrypt('u29ormawa'),'role' => 'user'],
+            ['id' => 29,'name' => 'Ormawa Pencak Silat Perisai Diri','email' => 'U30@ormawa.com','password' => bcrypt('u30ormawa'),'role' => 'user'],
+            ['id' => 30,'name' => 'Ormawa Pencak Silat PSHT','email' => 'U31@ormawa.com','password' => bcrypt('u31ormawa'),'role' => 'user'],
+            ['id' => 31,'name' => 'Ormawa Sepakbola dan Futsal','email' => 'U32@ormawa.com','password' => bcrypt('u32ormawa'),'role' => 'user'],
+            ['id' => 32,'name' => 'Ormawa Bola Basket','email' => 'U33@ormawa.com','password' => bcrypt('u33ormawa'),'role' => 'user'],
+            ['id' => 33,'name' => 'Ormawa Bola Voli','email' => 'U34@ormawa.com','password' => bcrypt('u34ormawa'),'role' => 'user'],
+            ['id' => 34,'name' => 'Ormawa Bulutangkis','email' => 'U35@ormawa.com','password' => bcrypt('u35ormawa'),'role' => 'user'],
+            ['id' => 35,'name' => 'Ormawa Tenis Lapangan','email' => 'U36@ormawa.com','password' => bcrypt('u36ormawa'),'role' => 'user'],
+            ['id' => 36,'name' => 'Ormawa Tenis Meja','email' => 'U37@ormawa.com','password' => bcrypt('u37ormawa'),'role' => 'user'],
+            ['id' => 37,'name' => 'Ormawa Komadiksi Smart','email' => 'U38@ormawa.com','password' => bcrypt('u38ormawa'),'role' => 'user'],
+            ['id' => 38,'name' => 'Ormawa Pentaque','email' => 'U39@ormawa.com','password' => bcrypt('u39ormawa'),'role' => 'user'],
+            ['id' => 39,'name' => 'Ormawa HMP Pascasarjana','email' => 'U40@ormawa.com','password' => bcrypt('u40ormawa'),'role' => 'user'],
+            ['id' => 40,'name' => 'Ormawa Society of Renewable Energy','email' => 'U41@ormawa.com','password' => bcrypt('u41ormawa'),'role' => 'user'],
+            ['id' => 41,'name' => 'Ormawa Judo','email' => 'U42@ormawa.com','password' => bcrypt('u42ormawa'),'role' => 'user'],
+            ['id' => 42,'name' => 'Ormawa Pagar Nusa','email' => 'U43@ormawa.com','password' => bcrypt('u43ormawa'),'role' => 'user'],
+            ['id' => 43,'name' => 'Ormawa E-Sport','email' => 'U44@ormawa.com','password' => bcrypt('u44ormawa'),'role' => 'user'],
+            ['id' => 44,'name' => 'Ormawa Aquatic','email' => 'U45@ormawa.com','password' => bcrypt('u45ormawa'),'role' => 'user'],
+            ['id' => 45,'name' => 'Ormawa Sepak Takraw','email' => 'U46@ormawa.com','password' => bcrypt('u46ormawa'),'role' => 'user'],
+            ['id' => 46,'name' => 'Ormawa Bengawan Team','email' => 'U47@ormawa.com','password' => bcrypt('u47ormawa'),'role' => 'user'],
+            ['id' => 47,'name' => 'Ormawa Catur','email' => 'U48@ormawa.com','password' => bcrypt('u48ormawa'),'role' => 'user'],
+            ['id' => 48,'name' => 'Non-Ormawa','email' => 'U99@ormawa.com','password' => bcrypt('u99ormawa'),'role' => 'user'],
+            ['id' => 49,'name' => 'Ormawa Futsal','email' => 'U49@ormawa.com','password' => bcrypt('u49ormawa'),'role' => 'user'],
+            ['id' => 50,'name' => 'Ormawa Atletik','email' => 'U50@ormawa.com','password' => bcrypt('u50ormawa'),'role' => 'user'],
+            ['id' => 51,'name' => 'Ormawa Kesusastraan','email' => 'U51@ormawa.com','password' => bcrypt('u51ormawa'),'role' => 'user'],
+            ['id' => 52,'name' => 'Ormawa UNS Consulting Club','email' => 'U52@ormawa.com','password' => bcrypt('u52ormawa'),'role' => 'user'],
+            ['id' => 53,'name' => 'Ormawa Ideas Lab UNS','email' => 'U53@ormawa.com','password' => bcrypt('u53ormawa'),'role' => 'user'],
+            ['id' => 54,'name' => 'Ormawa Forum Relawan Untuk Mahasiswa Disabilitas','email' => 'U54@ormawa.com','password' => bcrypt('u54ormawa'),'role' => 'user'],
+        ];
 
         // $pembina = [
         //     ['id' => 1,'name' => 'Pembina Kerohanian Islam JN UKMI', 'email' => 'U01@pembina.com', 'password' => bcrypt('u01pembina')],
@@ -181,22 +181,39 @@ class UserSeeder extends Seeder
             
         //     }
 
-        // foreach ($user as $u) {
-        //     $newUser = User::create([
-        //         'name' => $u['name'],
-        //         'email' => $u['email'],
-        //         'password' => $u['password'],
-        //     ]);
+        foreach ($user as $u) {
+            $newUser = User::create([
+                'name' => $u['name'],
+                'email' => $u['email'],
+                'password' => $u['password'],
+            ]);
 
-        //     Anggota::create([
-        //         'user_id' => $newUser->id,
-        //         'ormawa_id' => $u['id'],
-        //         'jabatan' => 'Ketua Ormawa',
-        //     ]);
+            Anggota::create([
+                'user_id' => $newUser->id,
+                'ormawa_id' => $u['id'],
+                'jabatan' => 'Ketua Ormawa',
+            ]);
 
-        //     $newUser->assignRole($u['role']);
-        //     $newUser->givePermissionTo('ketua-ormawa');
-        // }
+            $newUser->assignRole($u['role']);
+            $newUser->givePermissionTo('ketua-ormawa');
+        }
+
+         $adminRab = User::create([
+            'name' => 'Admin RAB',
+            'email' => 'admin@rab',
+            'password' => bcrypt('rab123')
+        ]);
+
+        $adminTor = User::create([
+            'name' => 'Admin TOR',
+            'email' => 'admin@tor',
+            'password' => bcrypt('tor123')
+        ]);
+
+        $adminRab->assignRole('admin');
+        $adminTor->assignRole('admin');
+        $adminRab->givePermissionTo('manage-rab');
+        $adminTor->givePermissionTo('manage-tor');
 
     }
 }
